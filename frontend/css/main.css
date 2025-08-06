@@ -1,0 +1,75 @@
+.main_content_title {
+    text-align: center;
+    font-size: clamp(1.5rem, calc(3rem + 1.0vw), 6rem);
+    color: var(--secondary-color);
+    font-weight: bold;
+    margin: 5vh 5vw;
+}
+
+.main_content {
+    width: 800px;
+    max-width: 90%;
+    font-size: clamp(0.5rem, calc(2rem + 1.0vw), 2rem);
+    margin: 0 auto;
+    margin-bottom: 10vh;
+}
+
+.main_menu {
+    margin: 5vh 5vw;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.main_menu a {
+    display: inline-block;
+    width: 400px;
+    max-width: 95%;
+    text-align: center;
+    background-color: #FFF;
+    margin: 1vh 1vw;
+    padding: 1vh 1vw;
+    box-sizing: border-box;
+    border-radius: 5vh;
+    transition: .5s;
+}
+
+.main_menu a:hover {
+    background-color: var(--secondary-color);
+    transition: .5s;
+}
+
+.main_menu a:hover div {
+    background-color: var(--primary-color);
+    transition: .5s;
+}
+
+.main_menu a:hover p {
+    color: var(--primary-color);
+    transition: .5s;
+}
+
+.main_menu a p {
+    font-size:  clamp(1rem, calc(2.5rem + 1.0vw), 4rem);
+    margin: 1.5vh 0;
+    color: black;
+    transition: .5s;
+}
+
+.main_menu a div {
+    background-color: var(--secondary-color);
+    width: 90%;
+    aspect-ratio: 1 / 1;
+    transition: .5s;
+}
+
+.main_menu_img {
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    -webkit-mask-position: center;
+    margin: 0 auto;
+}
+
