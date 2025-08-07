@@ -1,6 +1,19 @@
 /***** main *****/
 let main = document.getElementsByTagName("main")[0];
 
+//main top
+let mainTop = document.createElement("div");
+mainTop.classList.add("main_top");
+main.appendChild(mainTop);
+
+let mainTopImg = document.createElement("img");
+mainTopImg.src = "/img/main_top.png";
+mainTop.appendChild(mainTopImg);
+
+let mainTopText = document.createElement("p");
+mainTopText.innerHTML = "あい<br>うえお田";
+mainTop.appendChild(mainTopText);
+
 //main content
 let mainContentTitle = document.createElement("p");
 mainContentTitle.classList.add("main_content_title");

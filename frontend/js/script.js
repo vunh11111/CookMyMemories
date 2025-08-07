@@ -42,7 +42,9 @@ let menuList = [
 for ( var i = 0 ; i < menuList.length ; i++ ) {
     let headerMenuLink = document.createElement("a");
     headerMenuLink.href = "/" + menuList[i].link;
+    headerMenuLink.style.setProperty('--item-image',`url("/img/${menuList[i].name}.svg")`);
     headerMenuDiv.appendChild(headerMenuLink);
+
     let headerMenu = document.createElement("p");
     headerMenu.innerHTML = menuList[i].title;
     headerMenuLink.appendChild(headerMenu);
@@ -73,15 +75,9 @@ hamburgerMenuDiv.appendChild(hamburgerMenuContent);
 for ( var i = 0 ; i < menuList.length ; i++ ) {
     let hamburgerMenuLink = document.createElement("a");
     hamburgerMenuLink.href = "/" + menuList[i].link;
+    hamburgerMenuLink.innerHTML = menuList[i].title;
+    hamburgerMenuLink.style.setProperty('--item-image',`url("/img/${menuList[i].name}.svg")`);
     hamburgerMenuContent.appendChild(hamburgerMenuLink);
-    let hamburgerMenu = document.createElement("p");
-    hamburgerMenu.innerHTML = menuList[i].title;
-    hamburgerMenuLink.appendChild(hamburgerMenu);
-
-    const beforeStyle = window.getComputedStyle(hamburgerMenuLink, '::before');
-    console.log(beforeStyle);
-    hamburgerMenuLink.style.setProperty('background-image',"url(\"/img/" + menuList[i].name + ".svg\")");
-    console.log("url(\"/img/" + menuList[i].name + ".svg\")")
 }
 
 let hamburger_background = document.createElement("label");

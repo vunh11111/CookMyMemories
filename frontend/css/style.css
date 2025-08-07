@@ -109,10 +109,12 @@ header {
     }
 
     .header_menu a {
+        --item-image: url('/img/CMM_Icon.png');
         display: flex;
         margin-right: 1vw;
         opacity: 1;
         transition: .2s;
+        align-items: center;
     }
 
     .header_menu a:hover {
@@ -123,7 +125,7 @@ header {
     .header_menu a::before {
         content: '';
         display: inline-block;
-        /* background-image: url("/img/CMM_Icon.png"); */
+        background-image: var(--item-image);
         background-position: center;
         background-size: contain;
         height: 4vh;
@@ -205,16 +207,15 @@ header {
     .hamburger_content {
         position: fixed;
         top: 0;
-        left: 110%;
-        right: 100%;
-        width: 80vw;
-        max-width: 500px;
+        right: -100%;
+        width: 500px;
+        max-width: 100%;
         height: 100vh;
         background-color: var(--secondary-color);
         font-size: 2.5vh;
         transition: 0.5s;
         z-index: 100000;
-        padding-right: 10%;
+        padding-top: 50px;
     }
 
     .hamburger_background {
@@ -232,12 +233,6 @@ header {
 
     #hamburger_input:checked ~ .hamburger_content {
         right: 0;
-        left: 20vw;
-        transition: .5s;
-    }
-
-    #hamburger_input:checked ~ .hamburger_open {
-        right: 80vw;
         transition: .5s;
     }
 
@@ -248,13 +243,26 @@ header {
         transition: opacity .5s;
     }
 
-    .hamburger_content p {
+    .hamburger_content a {
+        --item-image: url('/img/CMM_Icon.png');
         height: 10vh;
-        text-align: center;
-        display: grid;
-        place-items: center;
-        margin: 5% 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        margin: 5% 5%;
         background-color: var(--primary-color);
+    }
+
+    .hamburger_content a::before {
+        content: '';
+        display: inline-block;
+        background-image: var(--item-image);
+        background-position: center;
+        background-size: contain;
+        height: 4vh;
+        aspect-ratio: 1 / 1;
+        margin-right: 0.5vw;
     }
 
     .hamburger_content a {
@@ -269,7 +277,6 @@ header {
 }
 
 main {
-    margin: 5vh 5vw;
     min-height: 60vh;
 }
 
