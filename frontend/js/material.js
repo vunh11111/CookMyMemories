@@ -71,23 +71,6 @@ let material = {
 }
 let selectMaterialArray = [];
 
-let selectMaterialTitle = document.createElement("p");
-selectMaterialTitle.classList.add("main_sub_title");
-selectMaterialTitle.innerHTML = "選んだ食材";
-main.appendChild(selectMaterialTitle);
-
-let selectMaterialDiv = document.createElement("div");
-selectMaterialDiv.classList.add("select_material");
-main.appendChild(selectMaterialDiv);
-
-let searchDiv = document.createElement("div");
-searchDiv.classList.add("search");
-main.appendChild(searchDiv);
-
-let search = document.createElement("button");
-search.innerHTML = "検索";
-searchDiv.appendChild(search);
-
 //dropdown menu
 let dropDownMenuTitle = document.createElement("p");
 dropDownMenuTitle.classList.add("main_sub_title");
@@ -129,6 +112,23 @@ for ( var i = 0 ; i < Object.keys(material).length ; i++ ) {
         checkBox.after(Object.values(material)[i].content[j]);
     }
 }
+
+let selectMaterialTitle = document.createElement("p");
+selectMaterialTitle.classList.add("main_sub_title");
+selectMaterialTitle.innerHTML = "選んだ食材";
+main.appendChild(selectMaterialTitle);
+
+let selectMaterialDiv = document.createElement("div");
+selectMaterialDiv.classList.add("select_material");
+main.appendChild(selectMaterialDiv);
+
+let searchDiv = document.createElement("div");
+searchDiv.classList.add("search");
+main.appendChild(searchDiv);
+
+let search = document.createElement("button");
+search.innerHTML = "検索";
+searchDiv.appendChild(search);
 
 const makeSelectMaterial = (value) => {
     let selectMaterial = document.createElement("div");

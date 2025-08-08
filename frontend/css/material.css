@@ -9,79 +9,6 @@ main {
     font-weight: bold;
 }
 
-.select_material {
-    padding: 10px 30px;
-    box-sizing: border-box;
-    min-height: 100px;
-    min-width: 90%;
-    width: 800px;
-    margin: 5vh auto;
-    display: flex;
-    justify-content: center;
-}
-
-.select_material div {
-    display: inline-block;
-    margin: 10px 10px;
-    padding: 10px 20px;
-    background-color: var(--secondary-color);
-    color: #ffffff;
-    font-size: clamp(0.5rem, calc(2rem + 1.0vw), 2rem);
-    border-radius: 9999px;
-    vertical-align: center;
-    height: 3rem;
-}
-
-.select_material p {
-    float: left;
-    padding-right: 10px;
-}
-
-.select_material button {
-    border: none;
-    background: transparent;
-    background-image: url("../img/x.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    opacity: 1;
-    transition: .2s;
-    height: 50%;
-    aspect-ratio: 1 / 1;
-}
-
-.select_material button:hover {
-    opacity: .6;
-    transition: .2s;
-}
-
-.search {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 15vh;
-}
-
-.search button {
-    border: 5px solid var(--secondary-color);
-    background: transparent;
-    cursor: pointer;
-    font-size: clamp(1.5rem, calc(2.2rem + 1.0vw), 3.5rem);
-    border-radius: 9999px;
-    width: 250px;
-    height: 80px;
-    font-weight: bold;
-    color: var(--secondary-color);
-    background-color: transparent;
-    transition: .5s;
-}
-
-.search button:hover {
-    color: var(--primary-color);
-    background-color: var(--secondary-color);
-    transition: .5s;
-
-}
-
 .drop_down_menu {
     margin: 10vh auto;
     max-width: 90%;
@@ -177,6 +104,79 @@ main {
 
 .check_box div label input:focus {
     outline: none;
+}
+
+.select_material {
+    padding: 10px 30px;
+    box-sizing: border-box;
+    min-height: 100px;
+    min-width: 90%;
+    width: 800px;
+    margin: 5vh auto;
+    display: flex;
+    justify-content: center;
+}
+
+.select_material div {
+    display: inline-block;
+    margin: 10px 10px;
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    font-size: clamp(0.5rem, calc(2rem + 1.0vw), 2rem);
+    border-radius: 9999px;
+    vertical-align: center;
+    height: 3rem;
+}
+
+.select_material p {
+    float: left;
+    padding-right: 10px;
+}
+
+.select_material button {
+    border: none;
+    background: transparent;
+    background-image: url("../img/x.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    opacity: 1;
+    transition: .2s;
+    height: 50%;
+    aspect-ratio: 1 / 1;
+}
+
+.select_material button:hover {
+    opacity: .6;
+    transition: .2s;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15vh;
+}
+
+.search button {
+    border: 5px solid var(--secondary-color);
+    background: transparent;
+    cursor: pointer;
+    font-size: clamp(1.5rem, calc(2.2rem + 1.0vw), 3.5rem);
+    border-radius: 9999px;
+    width: 250px;
+    height: 80px;
+    font-weight: bold;
+    color: var(--secondary-color);
+    background-color: transparent;
+    transition: .5s;
+}
+
+.search button:hover {
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    transition: .5s;
+
 }
 
 
