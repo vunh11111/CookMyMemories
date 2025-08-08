@@ -58,17 +58,19 @@ for ( var i = 0 ; i < menuList.length ; i++ ) {
     }
 }
 
-//country
+//country (sample)
 let country = [
     {
         value: "japan",
-        name: "日本"
+        name: "日本",
+        image: "img/japan.png"
     },
     {
         value: "vietnam",
-        name: "ベトナム"
+        name: "ベトナム",
+        image: "img/vietnam.png"
     }
-]
+];
 
 //hamburger menu
 let hamburgerMenuDiv = document.createElement("div");
@@ -116,7 +118,7 @@ hamburger_input.addEventListener('change', () => {
 
 /***** main *****/
 //breadcrumbs
-const breadcrumbsFn = (main) => {
+const breadcrumbsFn = (main,...content) => {
     let breadcrumbs = document.createElement("p");
     breadcrumbs.classList.add("breadcrumbs");
     main.appendChild(breadcrumbs);
@@ -126,21 +128,22 @@ const breadcrumbsFn = (main) => {
     breadcrumbsLink.innerHTML = "<span>" + "HOME" + "</span>";
     breadcrumbs.appendChild(breadcrumbsLink);
 
-    let currentPath = window.location.pathname;
-    let pathParts = currentPath.split('/').filter( part => part.length > 0 );
-
-    for ( var i = 1 ; i < pathParts.length - 1 ; i++ ) {
-        let breadcrumbsLink = document.createElement("a");
-        var j;
-        for ( j = 0 ; j < menuList.length ; j++ ) if ( menuList[j].link === pathParts[i] ) break;
-        breadcrumbsLink.href = pathParts[i];
-        breadcrumbsLink.innerHTML = "<span>" + menuList[j].title + "</span>";
-        breadcrumbs.appendChild(breadcrumbsLink);
+    for ( var i = 0 ; i < content.length ; i++ ) {
+        for ( var j = 0 ; j < menuList.length ; j++ ) {
+            if ( menuList[j].name === content[i] ) {
+                if ( i !== content.length - 1 ) {
+                    let breadcrumbsLink = document.createElement("a");
+                    breadcrumbsLink.href = menuList[j].link;
+                    breadcrumbsLink.innerHTML = "<span>" + menuList[j].title + "</span>";
+                    breadcrumbs.appendChild(breadcrumbsLink);
+                } else {
+                    let lastBreadcrumbs = breadcrumbs.getElementsByTagName("a");
+                    lastBreadcrumbs[lastBreadcrumbs.length-1].after(menuList[j].title);
+                }
+                break;
+            }
+        }
     }
-    let lastBreadcrumbs = breadcrumbs.getElementsByTagName("a");
-    var j;
-    for ( j = 0 ; j < menuList.length ; j++ ) if ( menuList[j].link === pathParts[i] ) break;
-    lastBreadcrumbs[lastBreadcrumbs.length-1].after(menuList[j].title);
 }
 
 //main title

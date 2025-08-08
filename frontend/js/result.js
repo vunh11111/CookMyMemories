@@ -2,7 +2,7 @@
 let main = document.getElementsByTagName("main")[0];
 
 //breadcrumbs
-breadcrumbsFn(main);
+breadcrumbsFn(main,menuList[0].name,menuList[2].name);
 
 //main title
 mainTitleFn(main,menuList[2].title);
@@ -13,6 +13,7 @@ let cooking = {
         name: "寿司",
         material: [ "米" , "酢" , "マグロ" ],
         image: "img/sushi_tuna.png",
+        country: "japan",
         way: [
             "米を炊く",
             "酢と米を混ぜる"
@@ -22,6 +23,7 @@ let cooking = {
         name: "おにぎり",
         material: [ "米" , "のり" , "梅" ],
         image: "img/sushi_tuna.png",
+        country: "japan",
         way: [
             "米を炊く",
             "にぎる"
@@ -45,6 +47,7 @@ const resultDisplay = (resultObj) => {
 
     let resultImg = document.createElement("img");
     resultImg.src = resultObj.image;
+    resultImg.classList.add("result_img");
     result.appendChild(resultImg);
 
     let resultTitle = document.createElement("p");
@@ -61,6 +64,12 @@ const resultDisplay = (resultObj) => {
     resultMaterial.innerHTML = material;
     resultMaterial.classList.add("result_material");
     result.appendChild(resultMaterial);
+
+    let resultCountry = document.createElement("img");
+    for ( var i = 0 ; i < country.length ; i++ ) if ( country[i].value === resultObj.country ) break;
+    resultCountry.src = country[i].image;
+    resultCountry.classList.add("result_country");
+    result.appendChild(resultCountry);
 };
 
 for ( var i = 0 ; i < Object.values(cooking).length ; i++ ) resultDisplay(Object.values(cooking)[i]);

@@ -2,7 +2,7 @@
 let main = document.getElementsByTagName("main")[0];
 
 //breadcrumbs
-breadcrumbsFn(main);
+breadcrumbsFn(main,menuList[0].name);
 
 //main title
 mainTitleFn(main,menuList[0].title);
