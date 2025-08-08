@@ -11,7 +11,7 @@ mainTopImg.src = "img/main_top.png";
 mainTop.appendChild(mainTopImg);
 
 let mainTopText = document.createElement("p");
-mainTopText.innerHTML = "懐かしの味を<br>この町で。．";
+mainTopText.innerHTML = "懐かしの味を<br>この町で。";
 mainTop.appendChild(mainTopText);
 
 //main content
