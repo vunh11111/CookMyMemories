@@ -7,7 +7,7 @@ mainTop.classList.add("main_top");
 main.appendChild(mainTop);
 
 let mainTopImg = document.createElement("img");
-mainTopImg.src = "/img/main_top.png";
+mainTopImg.src = "img/main_top.png";
 mainTop.appendChild(mainTopImg);
 
 let mainTopText = document.createElement("p");
@@ -33,14 +33,14 @@ main.appendChild(mainMenuDiv);
 for ( var i = 0 ; i < menuList.length ; i++ ) {
     if ( menuList[i].type === 'search' ) {
         let mainMenuLink = document.createElement("a");
-        mainMenuLink.href = "/" + menuList[i].link;
+        mainMenuLink.href = menuList[i].link;
         mainMenuDiv.appendChild(mainMenuLink);
 
         let mainMenuImg = document.createElement("div");
         mainMenuImg.classList.add("main_menu_img")
         mainMenuLink.appendChild(mainMenuImg);
 
-        let imgName = "url(\"/img/" + menuList[i].name + ".svg\")";
+        let imgName = "url(\"img/" + menuList[i].name + ".svg\")";
         mainMenuImg.style.maskImage = imgName;
         mainMenuImg.style.setProperty('-webkit-mask-image',imgName);
         mainMenuImg.style.WebkitMaskImage = imgName;

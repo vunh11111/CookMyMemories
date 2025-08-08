@@ -12,7 +12,7 @@ let headerTitleDiv = document.createElement("div");
 headerTitleDiv.classList.add("header_title");
 header.appendChild(headerTitleDiv);
 let headerTitleLink = document.createElement("a");
-headerTitleLink.href = "/index.html";
+headerTitleLink.href = "index.html";
 headerTitleDiv.appendChild(headerTitleLink);
 let headerTitle = document.createElement("p");
 headerTitle.innerHTML = pageTitle;
@@ -28,19 +28,19 @@ let menuList = [
     {
         name: "cooking",
         title: "料理名から探す",
-        link: "cooking",
+        link: "cooking.html",
         type: "search"
     },
     {
         name: "material",
         title: "食材から探す",
-        link: "material",
+        link: "material.html",
         type: "search"
     },
     {
         name: "result",
         title: "検索結果",
-        link: "result",
+        link: "result.html",
         type: "result"
     }
 ];
@@ -48,8 +48,8 @@ let menuList = [
 for ( var i = 0 ; i < menuList.length ; i++ ) {
     if ( menuList[i].type === 'search' ) {
         let headerMenuLink = document.createElement("a");
-        headerMenuLink.href = "/" + menuList[i].link;
-        headerMenuLink.style.setProperty('--item-image',`url("/img/${menuList[i].name}.svg")`);
+        headerMenuLink.href = menuList[i].link;
+        headerMenuLink.style.setProperty('--item-image',`url("../img/${menuList[i].name}.svg")`);
         headerMenuDiv.appendChild(headerMenuLink);
 
         let headerMenu = document.createElement("p");
@@ -95,9 +95,9 @@ hamburgerMenuDiv.appendChild(hamburgerMenuContent);
 for ( var i = 0 ; i < menuList.length ; i++ ) {
     if ( menuList[i].type === 'search' ) {
         let hamburgerMenuLink = document.createElement("a");
-        hamburgerMenuLink.href = "/" + menuList[i].link;
+        hamburgerMenuLink.href = menuList[i].link;
         hamburgerMenuLink.innerHTML = menuList[i].title;
-        hamburgerMenuLink.style.setProperty('--item-image',`url("/img/${menuList[i].name}.svg")`);
+        hamburgerMenuLink.style.setProperty('--item-image',`url("../img/${menuList[i].name}.svg")`);
         hamburgerMenuContent.appendChild(hamburgerMenuLink);
     }
 }
@@ -122,18 +122,18 @@ const breadcrumbsFn = (main) => {
     main.appendChild(breadcrumbs);
 
     let breadcrumbsLink = document.createElement("a");
-    breadcrumbsLink.href = "/index.html";
+    breadcrumbsLink.href = "index.html";
     breadcrumbsLink.innerHTML = "<span>" + "HOME" + "</span>";
     breadcrumbs.appendChild(breadcrumbsLink);
 
     let currentPath = window.location.pathname;
     let pathParts = currentPath.split('/').filter( part => part.length > 0 );
 
-    for ( var i = 0 ; i < pathParts.length - 1 ; i++ ) {
+    for ( var i = 1 ; i < pathParts.length - 1 ; i++ ) {
         let breadcrumbsLink = document.createElement("a");
         var j;
         for ( j = 0 ; j < menuList.length ; j++ ) if ( menuList[j].link === pathParts[i] ) break;
-        breadcrumbsLink.href = "/" + pathParts[i];
+        breadcrumbsLink.href = pathParts[i];
         breadcrumbsLink.innerHTML = "<span>" + menuList[j].title + "</span>";
         breadcrumbs.appendChild(breadcrumbsLink);
     }
@@ -158,7 +158,7 @@ let footer = document.getElementsByTagName("footer")[0];
 let footerTitle = document.createElement("a");
 footerTitle.classList.add("footer_title");
 footerTitle.innerHTML = pageTitle;
-footerTitle.href = "/index.html";
+footerTitle.href = "index.html";
 footer.appendChild(footerTitle);
 
 let footerMenuDiv = document.createElement("div");
@@ -168,7 +168,7 @@ footer.appendChild(footerMenuDiv);
 for ( var i = 0 ; i < menuList.length ; i++ ) {
     if ( menuList[i].type === 'search' ) {
         let footerMenuLink = document.createElement("a");
-        footerMenuLink.href = "/" + menuList[i].link;
+        footerMenuLink.href = menuList[i].link;
         footerMenuDiv.appendChild(footerMenuLink);
         let footerMenu = document.createElement("p");
         footerMenu.innerHTML = menuList[i].title;
