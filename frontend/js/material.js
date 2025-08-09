@@ -8,45 +8,7 @@ breadcrumbsFn(main,menuList[1].name);
 mainTitleFn(main,menuList[1].title);
 
 //country
-let countryDiv = document.createElement("div");
-countryDiv.classList.add("country");
-main.appendChild(countryDiv);
-
-let homeCountryP = document.createElement("p");
-homeCountryP.innerHTML = "母国";
-countryDiv.appendChild(homeCountryP);
-
-let homeCountryDiv = document.createElement("div");
-homeCountryDiv.classList.add("home_country");
-countryDiv.appendChild(homeCountryDiv);
-
-let homeCountry = document.createElement("select");
-homeCountryDiv.appendChild(homeCountry);
-
-for ( var i = 0 ; i < country.length ; i++ ) {
-    let homeCountryOption = document.createElement("option");
-    homeCountryOption.value = country[i].value;
-    homeCountryOption.innerHTML = country[i].name;
-    homeCountry.appendChild(homeCountryOption);
-}
-
-let residenceCountryP = document.createElement("p");
-residenceCountryP.innerHTML = "居住国";
-countryDiv.appendChild(residenceCountryP);
-
-let residenceCountryDiv = document.createElement("div");
-residenceCountryDiv.classList.add("residence_country");
-countryDiv.appendChild(residenceCountryDiv);
-
-let residenceCountry = document.createElement("select");
-residenceCountryDiv.appendChild(residenceCountry);
-
-for ( var i = 0 ; i < country.length ; i++ ) {
-    let residenceCountryOption = document.createElement("option");
-    residenceCountryOption.value = country[i].value;
-    residenceCountryOption.innerHTML = country[i].name;
-    residenceCountry.appendChild(residenceCountryOption);
-}
+countrySelect();
 
 //material (sample)
 let material = {
@@ -128,7 +90,13 @@ main.appendChild(searchDiv);
 
 let search = document.createElement("button");
 search.innerHTML = "検索";
+search.classList.add("searchButton");
 searchDiv.appendChild(search);
+
+let searchDelete = document.createElement("button");
+searchDelete.innerHTML = "リセット";
+searchDelete.classList.add("resetButton");
+searchDiv.appendChild(searchDelete);
 
 const makeSelectMaterial = (value) => {
     let selectMaterial = document.createElement("div");
@@ -149,6 +117,13 @@ const deleteSelectMaterial = (value) => {
     selectMaterialArray = selectMaterialArray.filter(element => element !== value);
 }
 
+const resetSelectMaterial = () => {
+    while ( selectMaterialArray.length > 0 ) {
+        document.getElementById(`check_box_${selectMaterialArray[0]}`).checked = 0;
+        deleteSelectMaterial(selectMaterialArray[0]);
+    }
+};
+
 checkBoxDiv.addEventListener('change',(event) => {
     if ( event.target.matches('.check_box_element') ) {
         let checkBox = event.target;
@@ -163,6 +138,10 @@ selectMaterialDiv.addEventListener('click',(event) => {
         document.getElementById(`check_box_${button.value}`).checked = 0;
         deleteSelectMaterial(button.value);
     }
+});
+
+searchDelete.addEventListener("click",() => {
+    resetSelectMaterial();
 });
 
 let checkBoxSelect = 0;

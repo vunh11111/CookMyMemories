@@ -25,10 +25,22 @@ main {
     border-top: 5px solid var(--secondary-color);
     border-bottom: 5px solid var(--secondary-color);
     border-left: 5px solid var(--secondary-color);
+    transition: .2s;
 }
 
 .search_box:focus {
     outline: none;
+    border-top: 8px solid var(--secondary-color);
+    border-bottom: 8px solid var(--secondary-color);
+    border-left: 8px solid var(--secondary-color);
+    transition: .2s;
+}
+
+.search_box:focus ~ .search_button {
+    border-top: 8px solid var(--secondary-color);
+    border-bottom: 8px solid var(--secondary-color);
+    border-right: 8px solid var(--secondary-color);
+    transition: .2s;
 }
 
 .search_box::-webkit-search-cancel-button {
