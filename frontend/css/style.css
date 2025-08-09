@@ -443,7 +443,7 @@ main {
     margin-right: 50px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
     .country p {
         width: 20%;
         margin: 2vh 0;

@@ -132,22 +132,22 @@ main {
     padding: 10px 30px;
     box-sizing: border-box;
     min-height: 100px;
-    min-width: 90%;
-    width: 800px;
+    max-width: 800px;
+    width: 90%;
     margin: 5vh auto;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .select_material div {
-    display: inline-block;
+    /* display: inline-block; */
     margin: 10px 10px;
     padding: 10px 20px;
     background-color: var(--secondary-color);
     color: #ffffff;
     font-size: clamp(0.5rem, calc(2rem + 1.0vw), 2rem);
     border-radius: 9999px;
-    vertical-align: center;
     height: 3rem;
 }
 
@@ -207,7 +207,7 @@ main {
     cursor: pointer;
     font-size: clamp(1rem, calc(2rem + 1.0vw), 3rem);
     border-radius: 9999px;
-    width: 250px;
+    width: 200px;
     height: 70px;
     font-weight: bold;
     color: var(--secondary-color);
