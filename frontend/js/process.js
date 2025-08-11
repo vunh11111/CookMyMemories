@@ -2,10 +2,10 @@
 let main = document.getElementsByTagName("main")[0];
 
 //breadcrumbs
-breadcrumbsFn(main,menuList[0].name,menuList[2].name,menuList[3].name);
+breadcrumbsFn(main,"cooking","result","process");
 
 //main title
-mainTitleFn(main,menuList[3].title);
+mainTitleFn(main,"process");
 
 //information
 const cookingDisplay = (resultObj) => {
@@ -31,6 +31,13 @@ const cookingDisplay = (resultObj) => {
     informationTime.innerHTML = "調理時間: " + resultObj.time + "分";
     informationTime.classList.add("information_time");
     informationDetail.appendChild(informationTime);
+
+    let informationDifficulty = document.createElement("p");
+    let difficulty = "難易度: ";
+    for ( var i = 0 ; i < resultObj.difficulty ; i++ ) difficulty += '<span style="color: #fbbc04;">★</span>'
+    for ( ; i < 5 ; i++ ) difficulty += '<span style="color: #c4c4c4;">★</span>'
+    informationDifficulty.innerHTML = difficulty;
+    informationDetail.appendChild(informationDifficulty);
 
     let informationMaterial = document.createElement("p");
     informationMaterial.classList.add("information_material");

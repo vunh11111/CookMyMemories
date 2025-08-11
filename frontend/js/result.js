@@ -2,10 +2,10 @@
 let main = document.getElementsByTagName("main")[0];
 
 //breadcrumbs
-breadcrumbsFn(main,menuList[0].name,menuList[2].name);
+breadcrumbsFn(main,"cooking","result");
 
 //main title
-mainTitleFn(main,menuList[2].title);
+mainTitleFn(main,"result");
 
 //result
 let resultDiv = document.createElement("div");
@@ -35,6 +35,13 @@ const resultDisplay = (resultObj) => {
     resultTime.innerHTML = "調理時間: " + resultObj.time + "分";
     resultTime.classList.add("result_time");
     result.appendChild(resultTime);
+
+    let resultDifficulty = document.createElement("p");
+    let difficulty = "難易度: ";
+    for ( var i = 0 ; i < resultObj.difficulty ; i++ ) difficulty += '<span style="color: #fbbc04;">★</span>'
+    for ( ; i < 5 ; i++ ) difficulty += '<span style="color: #c4c4c4;">★</span>'
+    resultDifficulty.innerHTML = difficulty;
+    result.appendChild(resultDifficulty);
 
     let resultMaterial = document.createElement("p");
     let material = "材料: ";

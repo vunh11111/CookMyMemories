@@ -100,15 +100,13 @@ header {
 @media (min-width: 801px) {
     .header_menu {
         display: flex;
-        top: 0;
-        right: 1.2vw;
         justify-content: flex-end;
         align-items: center;
         height: 100%;
         font-size: clamp(1rem, calc(1.5rem + 1.0vw), 2rem);
     }
 
-    .header_menu a {
+    .header_menu_list {
         --item-image: url('../img/CMM_Icon.png');
         display: flex;
         margin-right: 1vw;
@@ -121,7 +119,7 @@ header {
         padding-right: 5px;
     }
 
-    .header_menu a::after {
+    .header_menu_list::after {
         content: '';
         position: absolute;
         width: 100%;
@@ -135,17 +133,17 @@ header {
         transition: transform .5s ease-in-out;
     }
 
-    .header_menu a:hover::after {
+    .header_menu_list:hover::after {
         transform: scaleX(1);
         transform-origin: left;
     }
 
-    .header_menu a:hover {
+    .header_menu_list:hover {
         color: var(--primary-color);
         transition: .2s;
     }
 
-    .header_menu a::before {
+    .header_menu_list::before {
         content: '';
         display: inline-block;
         background-image: var(--item-image);
@@ -159,8 +157,31 @@ header {
         padding-left: 10px;
     }
 
-    .header_menu a:hover::before {
+    .header_menu_list:hover::before {
         filter: brightness(0) invert(1);
+        transition: .2s;
+    }
+
+    .login {
+        height: 100%;
+        opacity: 1;
+        transition: .2s;
+    }
+
+    .login img {
+        display: block;
+        height: 70%;
+        width: auto;
+        margin: 0 auto;
+    }
+
+    .login p {
+        font-size: clamp(0.2rem, calc(0.3rem + 1.0vw), 1rem);
+        margin: 0 auto;
+    }
+
+    .login:hover {
+        opacity: .6;
         transition: .2s;
     }
 
@@ -283,6 +304,7 @@ header {
         width: 90%;
         margin: 5% 5%;
         background-color: var(--primary-color);
+        box-sizing: border-box;
     }
 
     .hamburger_content a::before {
@@ -304,6 +326,12 @@ header {
     .hamburger_content a:hover {
         opacity: .6;
         transition: .2s;
+    }
+
+    .hamburger_login {
+        border: 10px double var(--secondary-color);
+        margin-bottom: 10% !important;
+        height: calc( 10vh + 10px ) !important;
     }
 }
 

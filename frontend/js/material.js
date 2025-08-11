@@ -2,10 +2,10 @@
 let main = document.getElementsByTagName("main")[0];
 
 //breadcrumbs
-breadcrumbsFn(main,menuList[1].name);
+breadcrumbsFn(main,"material");
 
 //main title
-mainTitleFn(main,menuList[1].title);
+mainTitleFn(main,"material");
 
 //country
 countrySelect();

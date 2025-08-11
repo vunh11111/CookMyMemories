@@ -33,45 +33,70 @@ headerMenuDiv.classList.add("header_menu");
 headerMenuDiv.id = "header_menu"
 header.appendChild(headerMenuDiv);
 
-let menuList = [
-    {
-        name: "cooking",
+let menuList = {
+    cooking: {
         title: "料理名から探す",
         link: "cooking.html",
         type: "search"
     },
-    {
-        name: "material",
+    material: {
         title: "食材から探す",
         link: "material.html",
         type: "search"
     },
-    {
-        name: "result",
+    result: {
         title: "検索結果",
         link: "result.html",
         type: "result"
     },
-    {
-        name: "process",
+    process: {
         title: "調理方法",
         link: "process.html",
         type: "process"
-    }
-];
+    },
+    sitepolicy: {
+        title: "サイトポリシー",
+        link: "sitepolicy.html",
+        type: "sitepolicy"
+    },
+    registration: {
+        title: "アカウント登録",
+        link: "registration.html",
+        type: "account"
+    },
+    login: {
+        title: "ログイン",
+        link: "login.html",
+        type: "account"
+    },
+};
 
-for ( var i = 0 ; i < menuList.length ; i++ ) {
-    if ( menuList[i].type === 'search' ) {
+for ( var i = 0 ; i < Object.values(menuList).length ; i++ ) {
+    if ( Object.values(menuList)[i].type === 'search' ) {
         let headerMenuLink = document.createElement("a");
-        headerMenuLink.href = menuList[i].link;
-        headerMenuLink.style.setProperty('--item-image',`url("../img/${menuList[i].name}.svg")`);
+        headerMenuLink.href = Object.values(menuList)[i].link;
+        headerMenuLink.classList.add("header_menu_list");
+        headerMenuLink.style.setProperty('--item-image',`url("../img/${Object.keys(menuList)[i]}.svg")`);
         headerMenuDiv.appendChild(headerMenuLink);
 
         let headerMenu = document.createElement("p");
-        headerMenu.innerHTML = menuList[i].title;
+        headerMenu.innerHTML = Object.values(menuList)[i].title;
         headerMenuLink.appendChild(headerMenu);
     }
 }
+
+let login = document.createElement("a");
+login.classList.add("login");
+login.href = "login.html";
+headerMenuDiv.appendChild(login);
+
+let loginImg = document.createElement("img");
+loginImg.src = "img/login.png";
+login.appendChild(loginImg);
+
+let loginName = document.createElement("p");
+loginName.innerHTML = "ログイン";
+login.appendChild(loginName);
 
 //hamburger menu
 let hamburgerMenuDiv = document.createElement("div");
@@ -95,13 +120,20 @@ let hamburgerMenuContent = document.createElement("div");
 hamburgerMenuContent.classList.add("hamburger_content");
 hamburgerMenuDiv.appendChild(hamburgerMenuContent);
 
-for ( var i = 0 ; i < menuList.length ; i++ ) {
-    if ( menuList[i].type === 'search' ) {
-        let hamburgerMenuLink = document.createElement("a");
-        hamburgerMenuLink.href = menuList[i].link;
-        hamburgerMenuLink.innerHTML = menuList[i].title;
-        hamburgerMenuLink.style.setProperty('--item-image',`url("../img/${menuList[i].name}.svg")`);
-        hamburgerMenuContent.appendChild(hamburgerMenuLink);
+const hamburgerMenuCreate = (title,link,img) => {
+    let hamburgerMenuLink = document.createElement("a");
+    hamburgerMenuLink.href = link;
+    hamburgerMenuLink.innerHTML = title;
+    hamburgerMenuLink.style.setProperty('--item-image',`url("../img/${img}")`);
+    hamburgerMenuContent.appendChild(hamburgerMenuLink);
+}
+
+hamburgerMenuCreate("ログイン","login.html","login.png");
+hamburgerMenuDiv.getElementsByTagName("a")[0].classList.add("hamburger_login");
+
+for ( var i = 0 ; i < Object.values(menuList).length ; i++ ) {
+    if ( Object.values(menuList)[i].type === 'search' ) {
+        hamburgerMenuCreate(Object.values(menuList)[i].title,Object.values(menuList)[i].link,Object.keys(menuList)[i]+".svg");
     }
 }
 
@@ -111,10 +143,8 @@ hamburger_background.htmlFor = "hamburger_input";
 hamburgerMenuDiv.appendChild(hamburger_background);
 
 hamburger_input.addEventListener('change', () => {
-    if ( hamburger_input.checked ) {
-        body.classList.add("is-noscroll");
-        console.log(1);
-    } else body.classList.remove('is-noscroll');
+    if ( hamburger_input.checked ) body.classList.add("is-noscroll");
+    else body.classList.remove('is-noscroll');
 });
 
 /***** main *****/
@@ -141,6 +171,7 @@ let cooking = {
         image: "img/sushi_tuna.png",
         country: "japan",
         time: 30,
+        difficulty: 4,
         process: [
             "米を炊く",
             "酢と米を混ぜる",
@@ -153,6 +184,7 @@ let cooking = {
         image: "img/sushi_tuna.png",
         country: "japan",
         time: 10,
+        difficulty: 1,
         process: [
             "米を炊く",
             "にぎる"
@@ -172,29 +204,24 @@ const breadcrumbsFn = (main,...content) => {
     breadcrumbs.appendChild(breadcrumbsLink);
 
     for ( var i = 0 ; i < content.length ; i++ ) {
-        for ( var j = 0 ; j < menuList.length ; j++ ) {
-            if ( menuList[j].name === content[i] ) {
-                if ( i !== content.length - 1 ) {
-                    let breadcrumbsLink = document.createElement("a");
-                    breadcrumbsLink.href = menuList[j].link;
-                    breadcrumbsLink.innerHTML = "<span>" + menuList[j].title + "</span>";
-                    breadcrumbs.appendChild(breadcrumbsLink);
-                } else {
-                    let lastBreadcrumbs = breadcrumbs.getElementsByTagName("a");
-                    lastBreadcrumbs[lastBreadcrumbs.length-1].after(menuList[j].title);
-                    document.getElementsByTagName("title")[0].innerHTML = menuList[i].title + " | " + pageTitle;
-                }
-                break;
-            }
+        if ( i !== content.length - 1 ) {
+            let breadcrumbsLink = document.createElement("a");
+            breadcrumbsLink.href = menuList[content[i]].link;
+            breadcrumbsLink.innerHTML = "<span>" + menuList[content[i]].title + "</span>";
+            breadcrumbs.appendChild(breadcrumbsLink);
+        } else {
+            let lastBreadcrumbs = breadcrumbs.getElementsByTagName("a");
+            lastBreadcrumbs[lastBreadcrumbs.length-1].after(menuList[content[i]].title);
+            document.getElementsByTagName("title")[0].innerHTML = menuList[content[i]].title + " | " + pageTitle;
         }
     }
 }
 
 //main title
-const mainTitleFn = (main,title) => {
+const mainTitleFn = (main,name) => {
     let mainTitle = document.createElement("p");
     mainTitle.classList.add("main_title");
-    mainTitle.innerHTML = title;
+    mainTitle.innerHTML = menuList[name].title;
     main.appendChild(mainTitle);
 }
 
@@ -274,13 +301,13 @@ let footerMenuDiv = document.createElement("div");
 footerMenuDiv.classList.add("footer_menu");
 footer.appendChild(footerMenuDiv);
 
-for ( var i = 0 ; i < menuList.length ; i++ ) {
-    if ( menuList[i].type === 'search' ) {
+for ( var i = 0 ; i < Object.values(menuList).length ; i++ ) {
+    if ( Object.values(menuList)[i].type === 'search' ) {
         let footerMenuLink = document.createElement("a");
-        footerMenuLink.href = menuList[i].link;
+        footerMenuLink.href = Object.values(menuList)[i].link;
         footerMenuDiv.appendChild(footerMenuLink);
         let footerMenu = document.createElement("p");
-        footerMenu.innerHTML = menuList[i].title;
+        footerMenu.innerHTML = Object.values(menuList)[i].title;
         footerMenuLink.appendChild(footerMenu);
     }
 }
