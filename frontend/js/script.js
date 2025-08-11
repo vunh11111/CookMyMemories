@@ -1,5 +1,14 @@
 /***** detail *****/
 let pageTitle = "Cook My Memories";
+let pageExplanation = "海外在住のあなたへ。故郷の味が恋しくなっても、食材が手に入らないと諦めていませんか？「Cook My Memories」は、今いる場所で手に入る食材を使って、懐かしい母国の料理を再現するためのレシピ検索アプリです。このアプリが、あなたの「食べたい」を「作れる」に変え、食卓から故郷との距離を縮めます。さあ、思い出の味を、今日の食卓で楽しみましょう。";
+
+/***** head *****/
+let head = document.getElementsByTagName("head")[0];
+
+let metaDescription = document.createElement("meta");
+metaDescription.name = "description";
+metaDescription.content = pageExplanation;
+head.appendChild(metaDescription);
 
 /***** body *****/
 let body = document.getElementsByTagName("body")[0];
@@ -42,6 +51,12 @@ let menuList = [
         title: "検索結果",
         link: "result.html",
         type: "result"
+    },
+    {
+        name: "process",
+        title: "調理方法",
+        link: "process.html",
+        type: "process"
     }
 ];
 
@@ -57,20 +72,6 @@ for ( var i = 0 ; i < menuList.length ; i++ ) {
         headerMenuLink.appendChild(headerMenu);
     }
 }
-
-//country (sample)
-let country = [
-    {
-        value: "japan",
-        name: "日本",
-        image: "img/japan.png"
-    },
-    {
-        value: "vietnam",
-        name: "ベトナム",
-        image: "img/vietnam.png"
-    }
-];
 
 //hamburger menu
 let hamburgerMenuDiv = document.createElement("div");
@@ -117,6 +118,46 @@ hamburger_input.addEventListener('change', () => {
 });
 
 /***** main *****/
+
+//country (sample)
+let country = [
+    {
+        value: "japan",
+        name: "日本",
+        image: "img/japan.png"
+    },
+    {
+        value: "vietnam",
+        name: "ベトナム",
+        image: "img/vietnam.png"
+    }
+];
+
+//cooking obj (sample)
+let cooking = {
+    sushi: {
+        name: "寿司",
+        material: [ "米" , "酢" , "マグロ" ],
+        image: "img/sushi_tuna.png",
+        country: "japan",
+        process: [
+            "米を炊く",
+            "酢と米を混ぜる",
+            "米の上にマグロをのせる"
+        ]
+    },
+    onigiri: {
+        name: "おにぎり",
+        material: [ "米" , "のり" , "梅" ],
+        image: "img/sushi_tuna.png",
+        country: "japan",
+        process: [
+            "米を炊く",
+            "にぎる"
+        ]
+    }
+}
+
 //breadcrumbs
 const breadcrumbsFn = (main,...content) => {
     let breadcrumbs = document.createElement("p");

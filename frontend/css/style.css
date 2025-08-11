@@ -24,7 +24,7 @@ body {
 }
 
 * {
-    margin: 0px
+    margin: 0px;
 }
 
 li {
@@ -351,7 +351,7 @@ main {
 
 .main_title {
     text-align: center;
-    font-size: clamp(1rem, calc(2.5rem + 1.0vw), 4rem);
+    font-size: clamp(2rem, calc(3rem + 1.0vw), 6rem);
     font-weight: bold;
     position: relative;
     margin: 5vh 5vw;

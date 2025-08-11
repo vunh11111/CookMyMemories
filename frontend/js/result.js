@@ -7,30 +7,6 @@ breadcrumbsFn(main,menuList[0].name,menuList[2].name);
 //main title
 mainTitleFn(main,menuList[2].title);
 
-//cooking obj (sample)
-let cooking = {
-    sushi: {
-        name: "寿司",
-        material: [ "米" , "酢" , "マグロ" ],
-        image: "img/sushi_tuna.png",
-        country: "japan",
-        way: [
-            "米を炊く",
-            "酢と米を混ぜる"
-        ]
-    },
-    onigiri: {
-        name: "おにぎり",
-        material: [ "米" , "のり" , "梅" ],
-        image: "img/sushi_tuna.png",
-        country: "japan",
-        way: [
-            "米を炊く",
-            "にぎる"
-        ]
-    }
-}
-
 //result
 let resultDiv = document.createElement("div");
 resultDiv.classList.add("result");

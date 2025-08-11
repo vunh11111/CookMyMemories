@@ -17,12 +17,12 @@ mainTop.appendChild(mainTopText);
 //main content
 let mainContentTitle = document.createElement("p");
 mainContentTitle.classList.add("main_content_title");
-mainContentTitle.innerHTML = "abc";
+mainContentTitle.innerHTML = "もう食材で悩まない。<br>いつもの味を、あなたの食卓で。";
 main.appendChild(mainContentTitle);
 
 let mainContent = document.createElement("p");
 mainContent.classList.add("main_content");
-mainContent.innerHTML = "abc";
+mainContent.innerHTML = "　" + pageExplanation;
 main.appendChild(mainContent);
 
 // main menu
