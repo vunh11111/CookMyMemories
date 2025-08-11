@@ -10,6 +10,9 @@ mainTitleFn(main,menuList[1].title);
 //country
 countrySelect();
 
+//maxTime
+maxTime();
+
 //material (sample)
 let material = {
     meat: {

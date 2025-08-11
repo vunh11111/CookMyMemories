@@ -27,6 +27,11 @@ const cookingDisplay = (resultObj) => {
     informationTitle.innerHTML = resultObj.name;
     informationDetail.appendChild(informationTitle);
 
+    let informationTime = document.createElement("p");
+    informationTime.innerHTML = "調理時間: " + resultObj.time + "分";
+    informationTime.classList.add("information_time");
+    informationDetail.appendChild(informationTime);
+
     let informationMaterial = document.createElement("p");
     informationMaterial.classList.add("information_material");
     let material = "材料: ";
@@ -62,6 +67,16 @@ const cookingDisplay = (resultObj) => {
         elementContent.innerHTML = resultObj.process[i];
         processElement.appendChild(elementContent);
     }
+
+    let backButtonDiv = document.createElement("div");
+    backButtonDiv.classList.add("back_button");
+    main.appendChild(backButtonDiv);
+
+    let backButton = document.createElement("button");
+    backButton.innerHTML = "　戻る";
+    backButton.type = "button";
+    backButton.onclick = () => {history.back()};
+    backButtonDiv.appendChild(backButton);
 };
 
 cookingDisplay(Object.values(cooking)[0]); //sample

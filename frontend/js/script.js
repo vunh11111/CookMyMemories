@@ -140,6 +140,7 @@ let cooking = {
         material: [ "米" , "酢" , "マグロ" ],
         image: "img/sushi_tuna.png",
         country: "japan",
+        time: 30,
         process: [
             "米を炊く",
             "酢と米を混ぜる",
@@ -151,6 +152,7 @@ let cooking = {
         material: [ "米" , "のり" , "梅" ],
         image: "img/sushi_tuna.png",
         country: "japan",
+        time: 10,
         process: [
             "米を炊く",
             "にぎる"
@@ -239,6 +241,23 @@ const countrySelect = () => {
     }
 
     residenceCountry.options[1].selected = true;
+};
+
+//maxTime
+const maxTime = () => {
+    let timeDiv = document.createElement("div");
+    timeDiv.classList.add("max_time");
+    main.appendChild(timeDiv);
+
+    let timeP = document.createElement("p");
+    timeP.innerHTML = "最大時間(分)";
+    timeDiv.appendChild(timeP);
+
+    let timeInput = document.createElement("input");
+    timeInput.type = "search";
+    timeInput.name = "search";
+    timeInput.placeholder = "10";
+    timeDiv.appendChild(timeInput);
 };
 
 /***** footer *****/

@@ -10,6 +10,9 @@ mainTitleFn(main,menuList[0].title);
 //country
 countrySelect();
 
+//maxTime
+maxTime();
+
 //search
 let search = document.createElement("div");
 search.classList.add("search");

@@ -454,6 +454,49 @@ main {
     }
 }
 
+.max_time {
+    margin: 10vh auto;
+    margin-bottom: 0;
+    max-width: 90%;
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.max_time p {
+    font-size: clamp(1rem, calc(2rem + 1.0vw), 3rem);
+    margin-right: 25px;
+}
+
+.max_time input {
+    border: none;
+    font-size: clamp(1rem, calc(2rem + 1.0vw), 3rem);
+    padding: 20px 30px;
+    width: 45%;
+    max-width: 300px;
+    height: 100%;
+    border-radius: 9999px;
+    outline: 5px solid var(--secondary-color);
+    box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    color: black;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.max_time input:focus {
+    outline-width: 8px;
+    transition: .2s;
+}
+
+.max_time input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
 footer {
     width: 100%;
     text-align: center;

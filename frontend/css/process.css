@@ -26,14 +26,15 @@ main {
     margin-bottom: 10vh;
 }
 
+.information_detail p:not(.information_title) {
+    font-size: clamp(0.5rem, calc(1rem + 1.0vw), 2rem);
+    margin-bottom: 5px;
+}
+
 .information_title {
     font-size: clamp(2rem, calc(3.5rem + 1.0vw), 8rem);
     font-weight: bold;
     margin-bottom: 10px;
-}
-
-.information_material {
-    font-size: clamp(0.5rem, calc(1rem + 1.0vw), 2rem);
 }
 
 @media (max-width: 700px) {
@@ -106,6 +107,53 @@ main {
 
 .process_element_content {
     font-size: clamp(0.8rem, calc(1.5rem + 1.0vw), 3rem);
+}
+
+.back_button {
+    display: grid;
+    place-items: center;
+}
+
+.back_button button {
+    border: 5px solid var(--secondary-color);
+    background: transparent;
+    cursor: pointer;
+    font-size: clamp(1rem, calc(2rem + 1.0vw), 3rem);
+    border-radius: 9999px;
+    width: 200px;
+    height: 70px;
+    font-weight: bold;
+    color: var(--secondary-color);
+    background-color: transparent;
+    transition: .5s;
+    margin-bottom: 5vh;
+    position: relative;
+}
+
+.back_button button::before {
+    content: '';
+    border-top: 5px solid var(--secondary-color);
+    border-right: 5px solid var(--secondary-color);
+    transform: translateY(-75%) rotate(-135deg);
+    position: absolute;
+    left: 25%;
+    top: 60%;
+    width: 15px;
+    height: 15px;
+    transition: .5s;
+}
+
+.back_button button:hover {
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    transition: .5s;
+}
+
+.back_button button:hover::before {
+    border-top: 5px solid var(--primary-color);
+    border-right: 5px solid var(--primary-color);
+    left: 20%;
+    transition: .5s;
 }
 
 

@@ -31,6 +31,11 @@ const resultDisplay = (resultObj) => {
     resultTitle.classList.add("result_title");
     result.appendChild(resultTitle);
 
+    let resultTime = document.createElement("p");
+    resultTime.innerHTML = "調理時間: " + resultObj.time + "分";
+    resultTime.classList.add("result_time");
+    result.appendChild(resultTime);
+
     let resultMaterial = document.createElement("p");
     let material = "材料: ";
     for ( var i = 0 ; i < resultObj.material.length ; i++ ) {

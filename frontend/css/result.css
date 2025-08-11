@@ -13,7 +13,7 @@ main {
     border: 5px solid var(--secondary-color);
     border-radius: 10px;
     width: 100%;
-    min-height: 35vh;
+    min-height: 30vh;
     box-sizing: border-box;
     padding: 10px 10px;
     color: black;
@@ -32,17 +32,16 @@ main {
     left: 2%;
 }
 
-.result_element p {
+.result_element p:not(.result_title) {
+    font-size: clamp(0.5rem, calc(1rem + 1.0vw), 2rem);
     margin-left: 40%;
+    margin-bottom: 5px;
 }
 
 .result_title {
     font-size: clamp(1.5rem, calc(3rem + 1.0vw), 6rem);
+    margin-left: 40%;
     margin-bottom: 10px;
-}
-
-.result_material {
-    font-size: clamp(0.5rem, calc(1rem + 1.0vw), 2rem);
 }
 
 .result_element::before {
@@ -99,6 +98,7 @@ main {
         height: 70%;
         position: relative;
     }
+
     .result_country {
         top: 10px;
         right: 10px;
