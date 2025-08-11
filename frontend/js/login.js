@@ -26,8 +26,8 @@ formNameP.innerHTML = "ニックネーム";
 formName.appendChild(formNameP);
 
 let formNameInput = document.createElement("input");
-formNameInput.type = "search";
-formNameInput.name = "search";
+formNameInput.type = "text";
+formNameInput.name = "text";
 formName.appendChild(formNameInput);
 
 let formPassword = document.createElement("div");

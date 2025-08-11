@@ -26,9 +26,21 @@ formNameP.innerHTML = "ニックネーム";
 formName.appendChild(formNameP);
 
 let formNameInput = document.createElement("input");
-formNameInput.type = "search";
-formNameInput.name = "search";
+formNameInput.type = "text";
+formNameInput.name = "text";
 formName.appendChild(formNameInput);
+
+let formMailAdress = document.createElement("div");
+formDiv.appendChild(formMailAdress);
+
+let formMailAdressP = document.createElement("p");
+formMailAdressP.innerHTML = "メールアドレス";
+formMailAdress.appendChild(formMailAdressP);
+
+let formMailAdressInput = document.createElement("input");
+formMailAdressInput.type = "email";
+formMailAdressInput.name = "email";
+formMailAdress.appendChild(formMailAdressInput);
 
 let formPassword = document.createElement("div");
 formDiv.appendChild(formPassword);

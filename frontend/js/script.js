@@ -281,9 +281,8 @@ const maxTime = () => {
     timeDiv.appendChild(timeP);
 
     let timeInput = document.createElement("input");
-    timeInput.type = "search";
-    timeInput.name = "search";
-    timeInput.placeholder = "10";
+    timeInput.type = "number";
+    timeInput.name = "number";
     timeDiv.appendChild(timeInput);
 };
 
