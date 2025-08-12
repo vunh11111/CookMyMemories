@@ -86,7 +86,7 @@
 
 @media (max-width: 700px) {
     .result_element p {
-        margin-left: 0;
+        margin-left: 0 !important;
     }
 
     .result_img {
@@ -99,6 +99,28 @@
         top: 10px;
         right: 10px;
     }
+}
+
+.show_more {
+    display: block;
+    border: 5px solid var(--secondary-color);
+    background: transparent;
+    cursor: pointer;
+    font-size: clamp(1rem, calc(1.5rem + 1.0vw), 2rem);
+    border-radius: 10px;
+    width: 200px;
+    height: 60px;
+    font-weight: bold;
+    color: var(--secondary-color);
+    background-color: transparent;
+    transition: .5s;
+    margin: 10vh auto;
+}
+
+.show_more:hover {
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    transition: .5s;
 }
 
 

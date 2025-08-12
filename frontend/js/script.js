@@ -200,6 +200,123 @@ let cooking = {
             "にぎる"
         ]
     },
+    a: {
+        name: "寿司",
+        material: [ "米" , "酢" , "マグロ" ],
+        image: "img/sushi_tuna.png",
+        country: "japan",
+        time: 30,
+        difficulty: 4,
+        process: [
+            "米を炊く",
+            "酢と米を混ぜる",
+            "米の上にマグロをのせる"
+        ]
+    },
+    b: {
+        name: "寿司",
+        material: [ "米" , "酢" , "マグロ" ],
+        image: "img/sushi_tuna.png",
+        country: "japan",
+        time: 30,
+        difficulty: 4,
+        process: [
+            "米を炊く",
+            "酢と米を混ぜる",
+            "米の上にマグロをのせる"
+        ]
+    },
+    c: {
+        name: "寿司",
+        material: [ "米" , "酢" , "マグロ" ],
+        image: "img/sushi_tuna.png",
+        country: "japan",
+        time: 30,
+        difficulty: 4,
+        process: [
+            "米を炊く",
+            "酢と米を混ぜる",
+            "米の上にマグロをのせる"
+        ]
+    },
+    d: {
+        name: "寿司",
+        material: [ "米" , "酢" , "マグロ" ],
+        image: "img/sushi_tuna.png",
+        country: "japan",
+        time: 30,
+        difficulty: 4,
+        process: [
+            "米を炊く",
+            "酢と米を混ぜる",
+            "米の上にマグロをのせる"
+        ]
+    },
+    e: {
+        name: "寿司",
+        material: [ "米" , "酢" , "マグロ" ],
+        image: "img/sushi_tuna.png",
+        country: "japan",
+        time: 30,
+        difficulty: 4,
+        process: [
+            "米を炊く",
+            "酢と米を混ぜる",
+            "米の上にマグロをのせる"
+        ]
+    },
+    f: {
+        name: "寿司",
+        material: [ "米" , "酢" , "マグロ" ],
+        image: "img/sushi_tuna.png",
+        country: "japan",
+        time: 30,
+        difficulty: 4,
+        process: [
+            "米を炊く",
+            "酢と米を混ぜる",
+            "米の上にマグロをのせる"
+        ]
+    },
+    g: {
+        name: "寿司",
+        material: [ "米" , "酢" , "マグロ" ],
+        image: "img/sushi_tuna.png",
+        country: "japan",
+        time: 30,
+        difficulty: 4,
+        process: [
+            "米を炊く",
+            "酢と米を混ぜる",
+            "米の上にマグロをのせる"
+        ]
+    },
+    h: {
+        name: "寿司",
+        material: [ "米" , "酢" , "マグロ" ],
+        image: "img/sushi_tuna.png",
+        country: "japan",
+        time: 30,
+        difficulty: 4,
+        process: [
+            "米を炊く",
+            "酢と米を混ぜる",
+            "米の上にマグロをのせる"
+        ]
+    },
+    i: {
+        name: "寿司",
+        material: [ "米" , "酢" , "マグロ" ],
+        image: "img/sushi_tuna.png",
+        country: "japan",
+        time: 30,
+        difficulty: 4,
+        process: [
+            "米を炊く",
+            "酢と米を混ぜる",
+            "米の上にマグロをのせる"
+        ]
+    },
 }
 
 //breadcrumbs

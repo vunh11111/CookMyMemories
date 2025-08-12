@@ -60,7 +60,26 @@ const resultDisplay = (resultObj) => {
     result.appendChild(resultCountry);
 };
 
-for ( var i = 0 ; i < Object.values(cooking).length ; i++ ) resultDisplay(Object.values(cooking)[i]);
+let showMore = document.createElement("button");
+showMore.classList.add("show_more");
+showMore.innerHTML = "もっと見る";
+main.appendChild(showMore);
+
+let displayNumber = 10;
+let sumDisplayNumber = 0;
+
+const resultAllDisplay = (resultObj) => {
+    for ( var i = sumDisplayNumber ; i < Object.values(resultObj).length && i - sumDisplayNumber < displayNumber ; i++ ) resultDisplay(Object.values(resultObj)[i]);
+    sumDisplayNumber = i;
+    if ( sumDisplayNumber === Object.values(resultObj).length ) showMore.style.display = "none";
+};
+
+showMore.addEventListener("click",() => {
+    resultAllDisplay(cooking);
+});
+
+resultAllDisplay(cooking);
+
 
 
 
