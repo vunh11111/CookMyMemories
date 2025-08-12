@@ -177,7 +177,6 @@ main {
 .search {
     display: grid;
     place-items: center;
-    margin-bottom: 15vh;
 }
 
 .searchButton {

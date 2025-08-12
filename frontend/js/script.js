@@ -237,6 +237,7 @@ const countrySelect = () => {
     countryDiv.appendChild(homeCountryDiv);
 
     let homeCountry = document.createElement("select");
+    homeCountry.name = "homeCountry";
     homeCountryDiv.appendChild(homeCountry);
 
     for ( var i = 0 ; i < country.length ; i++ ) {
@@ -255,6 +256,7 @@ const countrySelect = () => {
     countryDiv.appendChild(residenceCountryDiv);
 
     let residenceCountry = document.createElement("select");
+    homeCountry.name = "residenceCountry";
     residenceCountryDiv.appendChild(residenceCountry);
 
     for ( var i = 0 ; i < country.length ; i++ ) {
