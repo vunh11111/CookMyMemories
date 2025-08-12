@@ -6,10 +6,6 @@ let mainTop = document.createElement("div");
 mainTop.classList.add("main_top");
 main.appendChild(mainTop);
 
-let mainTopImg = document.createElement("img");
-mainTopImg.src = "img/main_top.png";
-mainTop.appendChild(mainTopImg);
-
 let mainTopText = document.createElement("p");
 mainTopText.innerHTML = "懐かしの味を<br>この町で。";
 mainTop.appendChild(mainTopText);
