@@ -1,7 +1,3 @@
-main {
-    margin: 5vh 5vw;
-}
-
 .form_error {
     text-align: center;
     font-size: clamp(0.5rem, calc(1rem + 1.0vw), 2rem);

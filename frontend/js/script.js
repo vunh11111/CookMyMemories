@@ -69,6 +69,16 @@ let menuList = {
         link: "login.html",
         type: "account"
     },
+    mypage: {
+        title: "マイページ",
+        link: "mypage.html",
+        type: "account"
+    },
+    passchange: {
+        title: "パスワード変更",
+        link: "passchange.html",
+        type: "account"
+    },
 };
 
 for ( var i = 0 ; i < Object.values(menuList).length ; i++ ) {
@@ -82,17 +92,20 @@ for ( var i = 0 ; i < Object.values(menuList).length ; i++ ) {
     }
 }
 
+let loginON = 0; //sample
+
 let login = document.createElement("a");
 login.classList.add("login");
-login.href = "login.html";
+login.href = loginON ? "mypage.html" : "login.html";
 headerMenuDiv.appendChild(login);
 
 let loginImg = document.createElement("img");
 loginImg.src = "img/login.png";
+loginImg.style.opacity = loginON ? 1 : 0.6;
 login.appendChild(loginImg);
 
 let loginName = document.createElement("p");
-loginName.innerHTML = "ログイン";
+loginName.innerHTML = loginON ? "マイページ" : "ログイン";
 login.appendChild(loginName);
 
 //hamburger menu
@@ -157,7 +170,7 @@ let country = [
         value: "vietnam",
         name: "ベトナム",
         image: "img/vietnam.png"
-    }
+    },
 ];
 
 //cooking obj (sample)
@@ -186,7 +199,7 @@ let cooking = {
             "米を炊く",
             "にぎる"
         ]
-    }
+    },
 }
 
 //breadcrumbs

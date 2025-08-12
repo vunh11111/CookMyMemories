@@ -1,7 +1,3 @@
-main {
-    margin: 5vh 5vw;
-}
-
 .main_content_title {
     text-align: center;
     font-size: clamp(1.5rem, calc(3rem + 1.0vw), 6rem);

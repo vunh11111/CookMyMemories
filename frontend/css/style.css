@@ -97,7 +97,7 @@ header {
     overflow: hidden;
 }
 
-@media (min-width: 801px) {
+@media (min-width: 850px) {
     .header_menu {
         display: flex;
         justify-content: flex-end;
@@ -190,7 +190,7 @@ header {
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
     .header_menu {
         display: none;
     }
@@ -337,6 +337,7 @@ header {
 
 main {
     min-height: 60vh;
+    margin: 5vh 5vw;
 }
 
 .breadcrumbs {
