@@ -1,43 +1,55 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "ingredients")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Ingredient {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    @Column(name = "ingredients", nullable = false, columnDefinition = "TEXT")
-    private String ingredients;
-    
-    @Column(name = "price", nullable = false, precision = 10, scale = 2)
-    private BigDecimal price;
-    
-    @Column(name = "created_at")
-    private java.time.LocalDateTime createdAt;
-    
-    @Column(name = "updated_at")
-    private java.time.LocalDateTime updatedAt;
-    
-    @PrePersist
-    protected void onCreate() {
-        createdAt = java.time.LocalDateTime.now();
-        updatedAt = java.time.LocalDateTime.now();
+    @Column(name = "ingredient_id")
+    private Long ingredientId;
+
+    @Column(name = "name", nullable = false, length = 100)
+    private String name;
+
+    @Column(name = "description", columnDefinition = "TEXT")
+    private String description;
+
+    @Column(name = "unit", length = 20)
+    private String unit;
+
+    // Getters & Setters
+    public Long getIngredientId() {
+        return ingredientId;
     }
-    
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = java.time.LocalDateTime.now();
+
+    public void setIngredientId(Long ingredientId) {
+        this.ingredientId = ingredientId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 }

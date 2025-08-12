@@ -24,7 +24,7 @@ body {
 }
 
 * {
-    margin: 0px
+    margin: 0px;
 }
 
 li {
@@ -81,7 +81,7 @@ header {
 .header_title p::before {
     content: "";
     display: inline-block;
-    background-image: url("/img/CMM_Icon.png");
+    background-image: url("../img/CMM_Icon.png");
     background-position: center;
     background-size: contain;
     height: 10vh;
@@ -100,37 +100,89 @@ header {
 @media (min-width: 801px) {
     .header_menu {
         display: flex;
-        top: 0;
-        right: 1.2vw;
         justify-content: flex-end;
         align-items: center;
         height: 100%;
         font-size: clamp(1rem, calc(1.5rem + 1.0vw), 2rem);
     }
 
-    .header_menu a {
-        --item-image: url('/img/CMM_Icon.png');
+    .header_menu_list {
+        --item-image: url('../img/CMM_Icon.png');
         display: flex;
         margin-right: 1vw;
         opacity: 1;
         transition: .2s;
         align-items: center;
+        position: relative;
+        color: black;
+        transition: .2s;
+        padding-right: 5px;
     }
 
-    .header_menu a:hover {
-        opacity: .6;
+    .header_menu_list::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: var(--secondary-color);
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform .5s ease-in-out;
+    }
+
+    .header_menu_list:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    .header_menu_list:hover {
+        color: var(--primary-color);
         transition: .2s;
     }
 
-    .header_menu a::before {
+    .header_menu_list::before {
         content: '';
         display: inline-block;
         background-image: var(--item-image);
         background-position: center;
         background-size: contain;
+        background-repeat: no-repeat;
         height: 4vh;
         aspect-ratio: 1 / 1;
-        margin-right: 0.5vw;
+        filter: none;
+        transition: .2s;
+        padding-left: 10px;
+    }
+
+    .header_menu_list:hover::before {
+        filter: brightness(0) invert(1);
+        transition: .2s;
+    }
+
+    .login {
+        height: 100%;
+        opacity: 1;
+        transition: .2s;
+    }
+
+    .login img {
+        display: block;
+        height: 70%;
+        width: auto;
+        margin: 0 auto;
+    }
+
+    .login p {
+        font-size: clamp(0.2rem, calc(0.3rem + 1.0vw), 1rem);
+        margin: 0 auto;
+    }
+
+    .login:hover {
+        opacity: .6;
+        transition: .2s;
     }
 
     .hamburger_menu {
@@ -244,7 +296,7 @@ header {
     }
 
     .hamburger_content a {
-        --item-image: url('/img/CMM_Icon.png');
+        --item-image: url('../img/CMM_Icon.png');
         height: 10vh;
         display: flex;
         justify-content: center;
@@ -252,6 +304,7 @@ header {
         width: 90%;
         margin: 5% 5%;
         background-color: var(--primary-color);
+        box-sizing: border-box;
     }
 
     .hamburger_content a::before {
@@ -274,6 +327,12 @@ header {
         opacity: .6;
         transition: .2s;
     }
+
+    .hamburger_login {
+        border: 10px double var(--secondary-color);
+        margin-bottom: 10% !important;
+        height: calc( 10vh + 10px ) !important;
+    }
 }
 
 main {
@@ -285,7 +344,9 @@ main {
 }
 
 .breadcrumbs a span {
-    border-bottom: 1px solid var(--secondary-color);
+    opacity: 1;
+    transition: .2s;
+    position: relative;
 }
 
 .breadcrumbs a::after {
@@ -295,12 +356,30 @@ main {
 }
 
 .breadcrumbs a span:hover {
-    border-bottom: none;
+    opacity: .6;
+    transition: .2s;
+}
+
+.breadcrumbs a span::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background-color: var(--secondary-color);
+    transform: scaleX(1);
+    transform-origin: center;
+    transition: 0.2s;
+}
+
+.breadcrumbs a span:hover::before {
+    transform: scaleX(0);
 }
 
 .main_title {
     text-align: center;
-    font-size: clamp(1rem, calc(2.5rem + 1.0vw), 4rem);
+    font-size: clamp(2rem, calc(3rem + 1.0vw), 6rem);
     font-weight: bold;
     position: relative;
     margin: 5vh 5vw;
@@ -353,6 +432,15 @@ main {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+    color: black;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.country div select:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transition: .2s;
 }
 
 .country div::after {
@@ -366,6 +454,13 @@ main {
     border-left: 5px solid var(--secondary-color);
     pointer-events: none;
     transform: translateY(-75%) rotate(-135deg);
+    transition: .2s;
+}
+
+.country div:has(select:hover)::after {
+    border-top: 5px solid var(--primary-color);
+    border-left: 5px solid var(--primary-color);
+    transition: .2s;
 }
 
 .country div select:focus {
@@ -376,7 +471,7 @@ main {
     margin-right: 50px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
     .country p {
         width: 20%;
         margin: 2vh 0;
@@ -385,6 +480,49 @@ main {
         width: 80%;
         margin: 2vh 0;
     }
+}
+
+.max_time {
+    margin: 10vh auto;
+    margin-bottom: 0;
+    max-width: 90%;
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.max_time p {
+    font-size: clamp(1rem, calc(2rem + 1.0vw), 3rem);
+    margin-right: 25px;
+}
+
+.max_time input {
+    border: none;
+    font-size: clamp(1rem, calc(2rem + 1.0vw), 3rem);
+    padding: 20px 30px;
+    width: 45%;
+    max-width: 300px;
+    height: 100%;
+    border-radius: 9999px;
+    outline: 5px solid var(--secondary-color);
+    box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    color: black;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.max_time input:focus {
+    outline-width: 8px;
+    transition: .2s;
+}
+
+.max_time input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
 }
 
 footer {

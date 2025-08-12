@@ -1,20 +1,36 @@
 package com.example.demo.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.math.BigDecimal;
+public class IngredientDTO {
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class IngredientDto {
-    
-    @JsonProperty("ingredients")
-    private String ingredients;
-    
-    @JsonProperty("price")
-    private BigDecimal price;
+    @JsonProperty("ingredient_id")
+    private Long ingredientId;
+
+    private String name;
+    private String description;
+    private String unit;
+
+    public IngredientDTO(Long ingredientId, String name, String description, String unit) {
+        this.ingredientId = ingredientId;
+        this.name = name;
+        this.description = description;
+        this.unit = unit;
+    }
+
+    public Long getIngredientId() {
+        return ingredientId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
 }

@@ -1,75 +1,88 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.IngredientDto;
+import com.example.demo.dto.IngredientDetailDTO;
+import com.example.demo.dto.IngredientSubstituteDTO;
+import com.example.demo.dto.IngredientSubstituteResponseDTO;
+import com.example.demo.dto.RecipeUsageDTO;
+import com.example.demo.dto.IngredientBasicDTO;
+import com.example.demo.dto.IngredientDTO;
 import com.example.demo.entity.Ingredient;
+// import com.example.demo.entity.RecipeIngredient;
+// import com.example.demo.entity.IngredientSubstitute;
 import com.example.demo.repository.IngredientRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import com.example.demo.repository.IngredientSubstituteRepository;
+import com.example.demo.repository.RecipeIngredientRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
-@Slf4j
-@Transactional(readOnly = true)
 public class IngredientService {
-    
+
     private final IngredientRepository ingredientRepository;
-    
-    /**
-     * Lấy tất cả ingredients
-     * @return List<IngredientDto>
-     */
-    public List<IngredientDto> getAllIngredients() {
-        log.info("Fetching all ingredients");
-        
-        List<Ingredient> ingredients = ingredientRepository.findAll();
-        
-        return ingredients.stream()
-                .map(this::convertToDto)
+    private final RecipeIngredientRepository recipeIngredientRepository;
+    private final IngredientSubstituteRepository substituteRepository;
+
+
+    public IngredientService(IngredientRepository ingredientRepository, RecipeIngredientRepository recipeIngredientRepository, IngredientSubstituteRepository substituteRepository) {
+        this.ingredientRepository = ingredientRepository;
+        this.recipeIngredientRepository = recipeIngredientRepository;
+        this.substituteRepository = substituteRepository;
+    }
+
+    public List<IngredientDTO> getAllIngredients() {
+        return ingredientRepository.findAll()
+                .stream()
+                .map(ingredient -> new IngredientDTO(
+                        ingredient.getIngredientId(),
+                        ingredient.getName(),
+                        ingredient.getDescription(),
+                        ingredient.getUnit()
+                ))
                 .collect(Collectors.toList());
     }
-    
-    /**
-     * Lấy tất cả ingredients được sắp xếp theo tên
-     * @return List<IngredientDto>
-     */
-    public List<IngredientDto> getAllIngredientsOrderByName() {
-        log.info("Fetching all ingredients ordered by name");
-        
-        List<Ingredient> ingredients = ingredientRepository.findAllOrderByIngredientsAsc();
-        
-        return ingredients.stream()
-                .map(this::convertToDto)
+    public IngredientDetailDTO getIngredientDetail(Long id) {
+        Ingredient ingredient = ingredientRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Ingredient not found"));
+
+        List<RecipeUsageDTO> usedInRecipes = recipeIngredientRepository.findByIngredient_IngredientId(id)
+                .stream()
+                .map(ri -> new RecipeUsageDTO(
+                        ri.getRecipe().getRecipeId(),
+                        ri.getRecipe().getName(),
+                        ri.getQuantity()
+                ))
                 .collect(Collectors.toList());
+
+        IngredientDetailDTO dto = new IngredientDetailDTO();
+        dto.setIngredient_id(ingredient.getIngredientId());
+        dto.setName(ingredient.getName());
+        dto.setDescription(ingredient.getDescription());
+        dto.setUnit(ingredient.getUnit());
+        dto.setUsed_in_recipes(usedInRecipes);
+
+        return dto;
     }
-    
-    /**
-     * Lấy tất cả ingredients được sắp xếp theo giá
-     * @return List<IngredientDto>
-     */
-    public List<IngredientDto> getAllIngredientsOrderByPrice() {
-        log.info("Fetching all ingredients ordered by price");
-        
-        List<Ingredient> ingredients = ingredientRepository.findAllOrderByPriceAsc();
-        
-        return ingredients.stream()
-                .map(this::convertToDto)
+    public IngredientSubstituteResponseDTO getIngredientSubstitutes(Long ingredientId) {
+        Ingredient original = ingredientRepository.findById(ingredientId)
+                .orElseThrow(() -> new RuntimeException("Ingredient not found"));
+
+        List<IngredientSubstituteDTO> substituteList = substituteRepository
+                .findByOriginalIngredient_IngredientId(ingredientId)
+                .stream()
+                .map(sub -> new IngredientSubstituteDTO(
+                        sub.getSubstituteIngredient().getIngredientId(),
+                        sub.getSubstituteIngredient().getName(),
+                        sub.getSimilarityScore(),
+                        sub.getComment()
+                ))
                 .collect(Collectors.toList());
-    }
-    
-    /**
-     * Convert Entity to DTO
-     * @param ingredient
-     * @return IngredientDto
-     */
-    private IngredientDto convertToDto(Ingredient ingredient) {
-        return new IngredientDto(
-            ingredient.getIngredients(),
-            ingredient.getPrice()
-        );
+
+        IngredientSubstituteResponseDTO response = new IngredientSubstituteResponseDTO();
+        response.setOriginal_ingredient(new IngredientBasicDTO(original.getIngredientId(), original.getName()));
+        response.setSubstitutes(substituteList);
+
+        return response;
     }
 }
