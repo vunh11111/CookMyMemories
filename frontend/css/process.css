@@ -127,6 +127,7 @@ main {
     background-color: transparent;
     transition: .5s;
     margin-bottom: 5vh;
+    text-indent: 2rem;
     position: relative;
 }
 

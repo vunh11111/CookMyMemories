@@ -550,7 +550,7 @@ footer {
     top: 0;
     right: 1.2vw;
     height: 100%;
-    margin: 2vh 0;
+    margin: 1vh 0;
 }
 
 .footer_menu a {
@@ -563,6 +563,20 @@ footer {
 }
 
 .footer_menu a:hover {
+    opacity: .6;
+    transition: .2s;
+}
+
+.footer_sitepolicy {
+    display: block;
+    margin-bottom: 1vh;
+    font-size: clamp(0.5rem, calc(1.5rem + 1.0vw), 1.8rem);
+    opacity: 1;
+    transition: .2s;
+    color: var(--primary-color);
+}
+
+.footer_sitepolicy:hover {
     opacity: .6;
     transition: .2s;
 }

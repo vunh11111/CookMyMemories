@@ -80,7 +80,7 @@ const cookingDisplay = (resultObj) => {
     main.appendChild(backButtonDiv);
 
     let backButton = document.createElement("button");
-    backButton.innerHTML = "　戻る";
+    backButton.innerHTML = "戻る";
     backButton.type = "button";
     backButton.onclick = () => {history.back()};
     backButtonDiv.appendChild(backButton);

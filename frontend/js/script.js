@@ -55,7 +55,7 @@ let menuList = {
         type: "process"
     },
     sitepolicy: {
-        title: "サイトポリシー",
+        title: "このサイトについて",
         link: "sitepolicy.html",
         type: "sitepolicy"
     },
@@ -76,12 +76,9 @@ for ( var i = 0 ; i < Object.values(menuList).length ; i++ ) {
         let headerMenuLink = document.createElement("a");
         headerMenuLink.href = Object.values(menuList)[i].link;
         headerMenuLink.classList.add("header_menu_list");
+        headerMenuLink.innerHTML = Object.values(menuList)[i].title;
         headerMenuLink.style.setProperty('--item-image',`url("../img/${Object.keys(menuList)[i]}.svg")`);
         headerMenuDiv.appendChild(headerMenuLink);
-
-        let headerMenu = document.createElement("p");
-        headerMenu.innerHTML = Object.values(menuList)[i].title;
-        headerMenuLink.appendChild(headerMenu);
     }
 }
 
@@ -304,12 +301,16 @@ for ( var i = 0 ; i < Object.values(menuList).length ; i++ ) {
     if ( Object.values(menuList)[i].type === 'search' ) {
         let footerMenuLink = document.createElement("a");
         footerMenuLink.href = Object.values(menuList)[i].link;
+        footerMenuLink.innerHTML = Object.values(menuList)[i].title;
         footerMenuDiv.appendChild(footerMenuLink);
-        let footerMenu = document.createElement("p");
-        footerMenu.innerHTML = Object.values(menuList)[i].title;
-        footerMenuLink.appendChild(footerMenu);
     }
 }
+
+let sitepolicy = document.createElement("a");
+sitepolicy.classList.add("footer_sitepolicy");
+sitepolicy.href = menuList.sitepolicy.link;
+sitepolicy.innerHTML = "このサイトについて"
+footer.appendChild(sitepolicy);
 
 let copyright = document.createElement("p");
 copyright.innerHTML = "Copyright © 2025 " + pageTitle + " All Rights Reserved."

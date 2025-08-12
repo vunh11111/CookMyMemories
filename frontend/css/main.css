@@ -37,6 +37,7 @@
     font-size: clamp(0.5rem, calc(2rem + 1.0vw), 2rem);
     margin: 0 auto;
     margin-bottom: 10vh;
+    text-indent: 2rem;
 }
 
 .main_menu {

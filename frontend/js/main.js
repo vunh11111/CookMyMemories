@@ -22,7 +22,7 @@ main.appendChild(mainContentTitle);
 
 let mainContent = document.createElement("p");
 mainContent.classList.add("main_content");
-mainContent.innerHTML = "　" + pageExplanation;
+mainContent.innerHTML = pageExplanation;
 main.appendChild(mainContent);
 
 // main menu
