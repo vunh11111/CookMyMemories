@@ -295,6 +295,7 @@ const maxTime = () => {
     let timeInput = document.createElement("input");
     timeInput.type = "number";
     timeInput.name = "number";
+    timeInput.min = 0;
     timeDiv.appendChild(timeInput);
 };
 
