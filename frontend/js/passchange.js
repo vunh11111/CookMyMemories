@@ -61,7 +61,7 @@ registerButton.classList.add("register_button");
 registerButton.innerHTML = "変更";
 
 registerButton.addEventListener("click",() => {
-    if ( formOldPasswordInput.value === "" ) formError.innerHTML = "古いニックネームを入力してください";
+    if ( formOldPasswordInput.value === "" ) formError.innerHTML = "古いパスワードを入力してください";
     else if ( formNewPasswordInput.value === "" ) formError.innerHTML = "新しいパスワードを入力してください";
     else if ( formNewPassword2Input.value === "" ) formError.innerHTML = "新しいパスワード(確認用)を入力してください";
     else if ( formNewPasswordInput.value !== formNewPassword2Input.value ) formError.innerHTML = "新しいパスワードが一致していません";
