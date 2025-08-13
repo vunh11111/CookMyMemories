@@ -110,6 +110,18 @@ header {
     }
 }
 
+@keyframes opacity{
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: .6;
+    }
+}
+
 @keyframes color2{
     0%{
         color: #000;

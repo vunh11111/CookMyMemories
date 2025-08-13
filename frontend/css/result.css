@@ -62,7 +62,12 @@
 }
 
 .result_element:hover {
-    animation: color .4s linear;
+    animation: color2 .4s linear;
+    animation-fill-mode: forwards;
+}
+
+.result_element:hover * {
+    animation: opacity .4s linear;
     animation-fill-mode: forwards;
 }
 
