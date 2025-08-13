@@ -33,7 +33,7 @@ const sitePolicyContent = (parentElement,text) => {
 //contents
 let contents = sitePolicyDiv(main);
 sitePolicyTitle(contents,"掲載内容について");
-sitePolicyContent(contents,"このサイト「Cook My Memories」のサイトです。チーム「RVHK」がこのサイトを運営・管理しています。このサイト内に張られたリンクが外部サイトである場合、その外部サイトの内容について「RVHK」は責任を負いません。");
+sitePolicyContent(contents,"このサイト「Cook My Memories」のサイトです。チーム「RVHK」がこのサイトを運営・管理しています。このサイト内に貼られたリンクが外部サイトである場合、その外部サイトの内容について「RVHK」は責任を負いません。");
 
 //copyRight
 let copyRight = sitePolicyDiv(main);
