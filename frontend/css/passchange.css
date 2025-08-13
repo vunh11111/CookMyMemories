@@ -3,7 +3,8 @@
     font-size: clamp(0.5rem, calc(1rem + 1.0vw), 2rem);
     color: red;
     font-weight: bold;
-    margin-top: 15vh;
+    margin-top: 10vh;
+    min-height: 5vh;
 }
 
 .form {

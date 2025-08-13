@@ -18,17 +18,17 @@ let formDiv = document.createElement("div");
 formDiv.classList.add("form");
 main.appendChild(formDiv);
 
-let formOldPasswordAdress = document.createElement("div");
-formDiv.appendChild(formOldPasswordAdress);
+let formOldPassword = document.createElement("div");
+formDiv.appendChild(formOldPassword);
 
-let formOldPasswordAdressP = document.createElement("p");
-formOldPasswordAdressP.innerHTML = "前のパスワード";
-formOldPasswordAdress.appendChild(formOldPasswordAdressP);
+let formOldPasswordP = document.createElement("p");
+formOldPasswordP.innerHTML = "前のパスワード";
+formOldPassword.appendChild(formOldPasswordP);
 
-let formOldPasswordAdressInput = document.createElement("input");
-formOldPasswordAdressInput.type = "password";
-formOldPasswordAdressInput.name = "password";
-formOldPasswordAdress.appendChild(formOldPasswordAdressInput);
+let formOldPasswordInput = document.createElement("input");
+formOldPasswordInput.type = "password";
+formOldPasswordInput.name = "password";
+formOldPassword.appendChild(formOldPasswordInput);
 
 let formNewPassword = document.createElement("div");
 formDiv.appendChild(formNewPassword);
@@ -58,8 +58,16 @@ formNewPassword2.appendChild(formNewPassword2Input);
 
 let registerButton = document.createElement("a");
 registerButton.classList.add("register_button");
-registerButton.href = "mypage.html";
 registerButton.innerHTML = "変更";
+
+registerButton.addEventListener("click",() => {
+    if ( formOldPasswordInput.value === "" ) formError.innerHTML = "古いニックネームを入力してください";
+    else if ( formNewPasswordInput.value === "" ) formError.innerHTML = "新しいパスワードを入力してください";
+    else if ( formNewPassword2Input.value === "" ) formError.innerHTML = "新しいパスワード(確認用)を入力してください";
+    else if ( formNewPasswordInput.value !== formNewPassword2Input.value ) formError.innerHTML = "新しいパスワードが一致していません";
+    else formError.innerHTML = "";
+});
+
 main.appendChild(registerButton);
 
 

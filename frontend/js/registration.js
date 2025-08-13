@@ -30,17 +30,17 @@ formNameInput.type = "text";
 formNameInput.name = "text";
 formName.appendChild(formNameInput);
 
-let formMailAdress = document.createElement("div");
-formDiv.appendChild(formMailAdress);
+let formMailAddress = document.createElement("div");
+formDiv.appendChild(formMailAddress);
 
-let formMailAdressP = document.createElement("p");
-formMailAdressP.innerHTML = "メールアドレス";
-formMailAdress.appendChild(formMailAdressP);
+let formMailAddressP = document.createElement("p");
+formMailAddressP.innerHTML = "メールアドレス";
+formMailAddress.appendChild(formMailAddressP);
 
-let formMailAdressInput = document.createElement("input");
-formMailAdressInput.type = "email";
-formMailAdressInput.name = "email";
-formMailAdress.appendChild(formMailAdressInput);
+let formMailAddressInput = document.createElement("input");
+formMailAddressInput.type = "email";
+formMailAddressInput.name = "email";
+formMailAddress.appendChild(formMailAddressInput);
 
 let formPassword = document.createElement("div");
 formDiv.appendChild(formPassword);
@@ -88,9 +88,15 @@ for ( var i = 0 ; i < country.length ; i++ ) {
 
 let registerButton = document.createElement("a");
 registerButton.classList.add("register_button");
-registerButton.href = "index.html";
 registerButton.innerHTML = "登録";
 main.appendChild(registerButton);
 
-
+registerButton.addEventListener("click",() => {
+    if ( formNameInput.value === "" ) formError.innerHTML = "ニックネームを入力してください";
+    else if ( formMailAddressInput.value === "" ) formError.innerHTML = "メールアドレスを入力してください";
+    else if ( formPasswordInput.value === "" ) formError.innerHTML = "パスワードを入力してください";
+    else if ( formPassword2Input.value === "" ) formError.innerHTML = "パスワード(確認用)を入力してください";
+    else if ( formPasswordInput.value !== formPassword2Input.value ) formError.innerHTML = "パスワードが一致していません";
+    else formError.innerHTML = "";
+});
 
