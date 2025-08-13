@@ -13,7 +13,6 @@
     box-sizing: border-box;
     padding: 10px 10px;
     color: black;
-    transition: .2s;
     margin-bottom: 5vh;
     position: relative;
 }
@@ -54,25 +53,22 @@
 .result_element::after {
     content: '';
     position: absolute;
-    width: 100%;
+    width: 0;
     height: 100%;
     background-color: var(--secondary-color);
     top: 0;
     left: 0;
     z-index: -1;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform .5s ease-in-out;
 }
 
 .result_element:hover {
-    color: var(--primary-color);
-    transition: .2s;
+    animation: color .4s linear;
+    animation-fill-mode: forwards;
 }
 
 .result_element:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
+    animation: backColor .4s linear;
+    animation-fill-mode: forwards;
 }
 
 .result_country {

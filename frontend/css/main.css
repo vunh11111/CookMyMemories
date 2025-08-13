@@ -70,7 +70,6 @@ main {
     padding: 1vh 1vw;
     box-sizing: border-box;
     border-radius: 5vh;
-    transition: .2s;
     position: relative;
     overflow: hidden;
 }
@@ -89,45 +88,39 @@ main {
 .main_menu a::after {
     content: '';
     position: absolute;
-    padding: 1vh 1vw;
-    width: 100%;
+    width: 0;
     height: 100%;
     background-color: var(--secondary-color);
     top: 0;
     left: 0;
     z-index: -1;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform .5s ease-in-out;
 }
 
 .main_menu a:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
+    animation: backColor .4s linear;
+    animation-fill-mode: forwards;
 }
 
 .main_menu a:hover div {
-    background-color: var(--primary-color);
-    transition: .2s;
+    animation: backColor2 .4s linear;
+    animation-fill-mode: forwards;
 }
 
 .main_menu a:hover p {
-    color: var(--primary-color);
-    transition: .2s;
+    animation: color .4s linear;
+    animation-fill-mode: forwards;
 }
 
 .main_menu a p {
     font-size:  clamp(1rem, calc(2.5rem + 1.0vw), 4rem);
     margin: 1.5vh 0;
     color: black;
-    transition: .5s;
 }
 
 .main_menu a div {
     background-color: var(--secondary-color);
     width: 90%;
     aspect-ratio: 1 / 1;
-    transition: .5s;
 }
 
 .main_menu_img {

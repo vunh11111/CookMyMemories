@@ -96,6 +96,75 @@ header {
     overflow: hidden;
 }
 
+@keyframes color{
+    0%{
+        color: #000;
+    }
+    50%{
+        color: var(--primary-color);
+        opacity: 1;
+    }
+    100%{
+        color: #000000;
+        opacity: .6;
+    }
+}
+
+@keyframes color2{
+    0%{
+        color: #000;
+    }
+    50%{
+        color: var(--primary-color);
+    }
+    100%{
+        color: #000000;
+    }
+}
+
+@keyframes backColor{
+    0%{
+        width: 0%;
+        left: 0;
+    }
+    50%{
+        width: 100%;
+        left: 0;
+    }
+    100%{
+        width: 0;
+        left: 100%;
+    }
+}
+
+@keyframes img{
+    0%{
+        filter: brightness(100%) invert(0);
+    }
+    50%{
+        filter: brightness(0) invert(1);
+        opacity: 1;
+    }
+    100%{
+        filter: brightness(100%) invert(0);
+        opacity: .6;
+    }
+}
+
+@keyframes backColor2{
+    0%{
+        background-color: var(--secondary-color);
+    }
+    50%{
+        background-color: var(--primary-color);
+        opacity: 1;
+    }
+    100%{
+        background-color: var(--secondary-color);
+        opacity: .6;
+    }
+}
+
 @media (min-width: 850px) {
     .header_menu {
         display: flex;
@@ -121,25 +190,22 @@ header {
     .header_menu_list::after {
         content: '';
         position: absolute;
-        width: 100%;
+        width: 0;
         height: 100%;
         background-color: var(--secondary-color);
         top: 0;
         left: 0;
         z-index: -1;
-        transform: scaleX(0);
-        transform-origin: right;
-        transition: transform .5s ease-in-out;
     }
 
     .header_menu_list:hover::after {
-        transform: scaleX(1);
-        transform-origin: left;
+        animation: backColor .4s linear;
+        animation-fill-mode: forwards;
     }
 
     .header_menu_list:hover {
-        color: var(--primary-color);
-        transition: .2s;
+        animation: color .4s linear;
+        animation-fill-mode: forwards;
     }
 
     .header_menu_list::before {
@@ -152,13 +218,12 @@ header {
         height: 4vh;
         aspect-ratio: 1 / 1;
         filter: none;
-        transition: .2s;
         padding-left: 10px;
     }
 
     .header_menu_list:hover::before {
-        filter: brightness(0) invert(1);
-        transition: .2s;
+        animation: img .4s linear;
+        animation-fill-mode: forwards;
     }
 
     .login {
