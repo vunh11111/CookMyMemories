@@ -69,15 +69,20 @@ formPassword2Input.autocomplete = "off";
 formPassword2.appendChild(formPassword2Input);
 
 let formCountry = document.createElement("div");
-formCountry.classList.add("formCountry");
+// formCountry.classList.add("formCountry");
 formDiv.appendChild(formCountry);
 
 let formCountryP = document.createElement("p");
 formCountryP.innerHTML = "母国";
 formCountry.appendChild(formCountryP);
 
+let formCountryDiv = document.createElement("div");
+formCountryDiv.classList.add("formCountry");
+formCountry.appendChild(formCountryDiv);
+
 let formCountrySelect = document.createElement("select");
-formCountry.appendChild(formCountrySelect);
+formCountrySelect.name = "country";
+formCountryDiv.appendChild(formCountrySelect);
 
 for ( var i = 0 ; i < country.length ; i++ ) {
     let formCountryOption = document.createElement("option");

@@ -24,7 +24,7 @@
 
 .form div p {
     width: 40%;
-    font-size: clamp(0.5rem, calc(1rem + 1.0vw), 2rem);
+    font-size: clamp(1rem, calc(1.5rem + 1.0vw), 2rem);
 }
 
 .form div input {
@@ -48,51 +48,22 @@
     -webkit-appearance: none;
 }
 
-.form div select {
-    width: 60%;
-    height: 100%;
-    font-size: clamp(0.5rem, calc(1rem + 1.0vw), 2rem);
-    border: none;
-    outline: 3px solid var(--secondary-color);
-    border-radius: 5px;
-    background-color: white;
-    color: black;
-    transition: .2s;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    box-sizing: border-box;
-    padding: 0 10px;
-}
+@media (max-width: 800px) {
+    .form div {
+        display: block;
+        height: auto;
+        margin-bottom: 40px;
+    }
 
-.form div select:hover {
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
-    transition: .2s;
-}
+    .form div p {
+        margin-bottom: 10px;
+        width: 100%;
+    }
 
-.formCountry {
-    position: relative;
-}
-
-.formCountry::after {
-    content: "";
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    width: 10px;
-    height: 10px;
-    border-top: 3px solid var(--secondary-color);
-    border-left: 3px solid var(--secondary-color);
-    pointer-events: none;
-    transform: translateY(-75%) rotate(-135deg);
-    transition: .2s;
-}
-
-.formCountry:has(select:hover)::after {
-    border-top: 3px solid var(--primary-color);
-    border-left: 3px solid var(--primary-color);
-    transition: .2s;
+    .form div input {
+        width: 100%;
+        min-height: 40px;
+    }
 }
 
 .login_button {
@@ -129,7 +100,7 @@
     margin: 0 auto;
     margin-bottom: 15vh;
     width: 30vw;
-    min-width: 350px;
+    min-width: 300px;
     padding: 1vh 1vw;
     border: 5px solid var(--secondary-color);
     border-radius: 10px;

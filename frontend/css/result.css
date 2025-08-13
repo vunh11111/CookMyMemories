@@ -27,16 +27,15 @@
     left: 2%;
 }
 
-.result_element p:not(.result_title) {
-    font-size: clamp(0.5rem, calc(1rem + 1.0vw), 2rem);
+.result_element p {
+    font-size: clamp(1rem, calc(1.5rem + 1.0vw), 2rem);
     margin-left: 40%;
     margin-bottom: 5px;
 }
 
 .result_title {
-    font-size: clamp(1.5rem, calc(3rem + 1.0vw), 6rem);
-    margin-left: 40%;
-    margin-bottom: 10px;
+    font-size: clamp(1.5rem, calc(3rem + 1.0vw), 6rem) !important;
+    margin-bottom: 10px !important;
 }
 
 .result_element::before {
