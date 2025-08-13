@@ -11,13 +11,12 @@ html, body {
 }
 
 html {
-    font-family: Arial,'ヒラギノ明朝 ProN', sans-serif;
     font-size: 62.5%;
 }
 
 body {
     background-color: #FFF;
-    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-family: "M PLUS Rounded 1c", "ヒラギノ角ゴ ProN W3", HiraKakuProN-W3, 游ゴシック, "Yu Gothic", メイリオ, Meiryo, Verdana, Helvetica, Arial, sans-serif;
     position: relative;
     background-color: var(--primary-color);
     padding-top: 10vh;
