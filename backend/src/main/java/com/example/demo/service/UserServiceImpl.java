@@ -4,8 +4,9 @@ import com.example.demo.dto.*;
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.security.JwtUtil;
-import com.example.demo.service.UserService;
+// import com.example.demo.service.UserService;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -75,16 +76,55 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
-    @Override
-    public void changePassword(String username, ChangePasswordRequest request) {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+    // @Override
+    // public void changePassword(String username, ChangePasswordRequest request) {
+    //     if (request == null || request.getOldPassword2() == null || request.getNewPassword2() == null) {
+    //         throw new IllegalArgumentException("Old password and new password must be provided");
+    //     }
 
-        if (!passwordEncoder.matches(request.getOldPassword(), user.getPassword())) {
-            throw new RuntimeException("Old password is incorrect");
+    //     User user = userRepository.findByUsername(username)
+    //             .orElseThrow(() -> new RuntimeException("User not found"));
+
+    //     if (!passwordEncoder.matches(request.getOldPassword2(), user.getPassword())) {
+    //         throw new RuntimeException("Old password is incorrect");
+    //     }
+
+    //     user.setPassword(passwordEncoder.encode(request.getNewPassword2()));
+    //     userRepository.save(user);
+    // }
+    @Override
+    @Transactional
+    public void changePassword(String username, ChangePasswordRequest request) {
+        // Validate input
+        if (username == null || username.trim().isEmpty()) {
+            throw new IllegalArgumentException("Username cannot be null or empty");
+        }
+        
+        if (request == null || request.getOldPassword2() == null || request.getNewPassword2() == null) {
+            throw new IllegalArgumentException("Old password and new password must be provided");
         }
 
-        user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+        // Validate new password strength
+        if (request.getNewPassword2().length() < 6) {
+            throw new IllegalArgumentException("New password must be at least 6 characters long");
+        }
+
+        // Find user
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found with username: " + username));
+
+        // Verify old password
+        if (!passwordEncoder.matches(request.getOldPassword2(), user.getPassword())) {
+            throw new RuntimeException("Current password is incorrect");
+        }
+
+        // Check if new password is different from old password
+        if (passwordEncoder.matches(request.getNewPassword2(), user.getPassword())) {
+            throw new IllegalArgumentException("New password must be different from current password");
+        }
+
+        // Update password
+        user.setPassword(passwordEncoder.encode(request.getNewPassword2()));
         userRepository.save(user);
     }
 }

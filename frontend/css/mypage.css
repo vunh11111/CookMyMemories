@@ -1,0 +1,151 @@
+.form_error {
+    text-align: center;
+    font-size: clamp(0.5rem, calc(1rem + 1.0vw), 2rem);
+    color: red;
+    font-weight: bold;
+    margin-top: 15vh;
+}
+
+.form {
+    margin: 5vh auto;
+    margin-bottom: 10vh;
+    max-width: 90%;
+    width: 700px;
+}
+
+.form div {
+    width: 100%;
+    height: 5vh;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.form_item {
+    width: 32%;
+    font-size: clamp(0.5rem, calc(1rem + 1.0vw), 2rem);
+}
+
+.form_content {
+    width: 53%;
+    font-size: clamp(0.5rem, calc(1rem + 1.0vw), 2rem);
+    display: block;
+}
+
+.form div input {
+    width: 53%;
+    height: 100%;
+    font-size: clamp(0.5rem, calc(1rem + 1.0vw), 2rem);
+    border: none;
+    outline: 3px solid var(--secondary-color);
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    box-sizing: border-box;
+    padding: 0 10px;
+    display: none;
+}
+
+.form div input:focus {
+    outline-width: 5px;
+}
+
+.form div input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+#form_country_input {
+    width: 53%;
+    height: 100%;
+    margin: 0;
+    display: none;
+    position: relative;
+}
+
+#form_country_input select {
+    width: 100%;
+    height: 100%;
+    font-size: clamp(0.5rem, calc(1rem + 1.0vw), 2rem);
+    border: none;
+    outline: 3px solid var(--secondary-color);
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    box-sizing: border-box;
+    padding: 0 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+#form_country_input select:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transition: .2s;
+}
+
+#form_country_input::after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    border-top: 3px solid var(--secondary-color);
+    border-left: 3px solid var(--secondary-color);
+    pointer-events: none;
+    transform: translateY(-75%) rotate(-135deg);
+    transition: .2s;
+}
+
+#form_country_input:has(select:hover)::after {
+    border-top: 3px solid var(--primary-color);
+    border-left: 3px solid var(--primary-color);
+    transition: .2s;
+}
+
+.form div button {
+    width: 13%;
+    height: 100%;
+    border: none;
+    font-size: clamp(0.5rem, calc(1rem + 1.0vw), 2rem);
+    border-radius: 5px;
+    font-weight: bold;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    position: relative;
+    margin-left: 2%;
+    opacity: 1;
+    transition: .2s;
+}
+
+.button_hover {
+    cursor: pointer;
+}
+
+.button_hover:hover {
+    opacity: .6;
+    transition: .2s;
+}
+
+.pass_change {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 15vh;
+    width: 20vw;
+    min-width: 250px;
+    padding: 1vh 1vw;
+    border: 5px solid var(--secondary-color);
+    border-radius: 10px;
+    text-align: center;
+    font-size:  clamp(1rem, calc(1.5rem + 1.0vw), 2.5rem);
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    transition: .2s;
+}
+
+.pass_change:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transition: .2s;
+}

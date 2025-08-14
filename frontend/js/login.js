@@ -1,3 +1,4 @@
+//login.js
 /***** main *****/
 let main = document.getElementsByTagName("main")[0];
 
@@ -58,6 +59,140 @@ registerButton.classList.add("register_button");
 registerButton.href = "registration.html";
 registerButton.innerHTML = "アカウント未登録の方";
 main.appendChild(registerButton);
+
+// loginButton.addEventListener("click", async function (e) {
+//     e.preventDefault();
+    
+//     const username = formNameInput.value.trim();
+//     const password = formPasswordInput.value.trim();
+
+//     if (!username || !password) {
+//         formError.innerHTML = "Vui lòng nhập đầy đủ thông tin.";
+//         return;
+//     }
+
+//     try {
+//         const response = await fetch("http://localhost:8080/api/users/login", {
+//             method: "POST",
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify({ username, password })
+//         });
+
+//         if (response.ok) {
+//             // const data = await response.json();
+//             // saveToken(data.token); // từ auth.js
+//             localStorage.setItem("token", response.token);
+//             window.location.href = "profile.html";
+//         } else {
+//             const err = await response.text();
+//             formError.innerHTML = err || "Đăng nhập thất bại.";
+//         }
+//     } catch (error) {
+//         console.error(error);
+//         formError.innerHTML = "Có lỗi xảy ra khi kết nối server.";
+//     }
+// });
+
+// loginButton.addEventListener("click", async function (e) {
+//     e.preventDefault();
+//     formError.innerHTML = "";
+
+//     const username = formNameInput.value.trim();
+//     const password = formPasswordInput.value.trim();
+
+//     if (!username || !password) {
+//         formError.innerHTML = "Vui lòng nhập đầy đủ thông tin.";
+//         return;
+//     }
+
+//     try {
+//         const response = await fetch("http://localhost:8080/api/users/login", {
+//             method: "POST",
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify({ username, password })
+//         });
+
+//         if (response.ok) {
+//             // parse JSON body
+//             let data;
+//             try {
+//                 data = await response.json();
+//             } catch (err) {
+//                 console.error("Không parse được JSON từ response login:", err);
+//                 formError.innerHTML = "Server trả về dữ liệu không hợp lệ.";
+//                 return;
+//             }
+
+//             // tìm token trong các trường thường gặp
+//             const token = data.token || data.jwt || data.accessToken || data.jwtToken;
+//             if (!token) {
+//                 console.log("Login response (no token):", data);
+//                 formError.innerHTML = "Đăng nhập thất bại: server không trả token.";
+//                 return;
+//             }
+
+//             // LƯU token cùng key với profile.js
+//             localStorage.setItem("jwtToken", token);
+
+//             // chuyển hướng tới profile
+//             window.location.href = "profile.html";
+//         } else {
+//             // lấy message lỗi (có thể là text hoặc JSON)
+//             let errText = await response.text();
+//             try {
+//                 const errObj = JSON.parse(errText);
+//                 errText = errObj.message || errObj.error || JSON.stringify(errObj);
+//             } catch (e) { /* giữ nguyên errText nếu không phải JSON */ }
+//             formError.innerHTML = errText || "Đăng nhập thất bại.";
+//         }
+//     } catch (error) {
+//         console.error("Lỗi khi gọi API login:", error);
+//         formError.innerHTML = "Có lỗi xảy ra khi kết nối server.";
+//     }
+// });
+
+loginButton.addEventListener("click", async function (e) {
+    e.preventDefault();
+    formError.innerHTML = "";
+
+    const username = formNameInput.value.trim();
+    const password = formPasswordInput.value.trim();
+
+    if (!username || !password) {
+        formError.innerHTML = "Vui lòng nhập đầy đủ thông tin.";
+        return;
+    }
+
+    try {
+        const response = await fetch("http://localhost:8080/api/users/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
+        });
+
+        if (response.ok) {
+            const data = await response.json(); // Backend giờ trả { token: "..." }
+            if (!data.token) {
+                console.error("Phản hồi login không có token:", data);
+                formError.innerHTML = "Đăng nhập thất bại: server không trả token.";
+                return;
+            }
+
+            // Lưu token (cùng key với profile.js)
+            window.auth.onLoginSuccess(data.token);
+        } else {
+            let errText = await response.text();
+            try {
+                const errObj = JSON.parse(errText);
+                errText = errObj.message || errObj.error || JSON.stringify(errObj);
+            } catch (_) {}
+            formError.innerHTML = errText || "Đăng nhập thất bại.";
+        }
+    } catch (error) {
+        console.error("Lỗi khi gọi API login:", error);
+        formError.innerHTML = "Có lỗi xảy ra khi kết nối server.";
+    }
+});
 
 
 

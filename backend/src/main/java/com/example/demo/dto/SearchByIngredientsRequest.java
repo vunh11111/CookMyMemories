@@ -8,7 +8,6 @@ import lombok.Setter;
 @Setter
 public class SearchByIngredientsRequest {
     private List<Long> ingredientIds;
-    private Long userId;
-
-    // getters & setters
+    private Integer maxTime; // Thời gian tối đa (phút)
+    private String cuisineType; // Loại món ăn
 }

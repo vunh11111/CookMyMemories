@@ -1,0 +1,86 @@
+body {
+    /* font-family: "Noto Sans JP", sans-serif; */
+    background-color: #fff7dc;
+    margin: 0;
+    padding: 0;
+    color: #3b2b20;
+}
+
+/* Tiêu đề trang */
+h1 {
+    position: relative;  
+    text-align: center;
+    font-size: 5rem;
+    font-weight: bold;
+    margin: 1.5rem 0;
+    padding-left: 1rem;
+    border-left: 5px solid #7b3f00;
+    top: 100px;
+}
+
+/* Khung chứa thông tin */
+.profile-container {
+    position: relative; 
+    background-color: #fff7dc;
+    border: 3px solid #7b3f00;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin: 0 auto;
+    max-width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    top:150px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+/* Label */
+.profile-container label {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+    min-width: 80px;
+    color: #3b2b20;
+}
+
+/* Input */
+.profile-container input[type="text"],
+.profile-container input[type="email"] {
+    border: 2px solid #7b3f00;
+    border-radius: 25px;
+    padding: 0.4rem 0.8rem;
+    font-size: 2rem;
+    background-color: white;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.profile-container input:focus {
+    border-color: #d97706;
+}
+
+/* Nút lưu */
+#saveProfileBtn {
+    background-color: #fff;
+    color: #3b2b20;
+    border: 2px solid #7b3f00;
+    border-radius: 25px;
+    padding: 0.4rem 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#saveProfileBtn:hover {
+    background-color: #7b3f00;
+    color: #fff7dc;
+}
+
+/* footer {
+    background-color: #7b3f00;
+    color: #fff7dc;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+} */

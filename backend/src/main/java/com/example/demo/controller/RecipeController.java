@@ -14,6 +14,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
 @RequestMapping("/api/recipes")
 public class RecipeController {
@@ -33,18 +34,34 @@ public class RecipeController {
     public ResponseEntity<RecipeDetailDTO> getRecipeDetail(@PathVariable Long id) {
         return ResponseEntity.ok(recipeService.getRecipeDetail(id));
     }
+    // @GetMapping("/filter")
+    // public ResponseEntity<RecipeFilterResponseDTO> filterRecipes(
+    //         @RequestParam(required = false) String cuisine_type,
+    //         @RequestParam(required = false) Integer max_time) {
+
+    //     RecipeFilterResponseDTO response = recipeService.filterRecipes(cuisine_type, max_time);
+    //     return ResponseEntity.ok(response);
+    // }
     @GetMapping("/filter")
     public ResponseEntity<RecipeFilterResponseDTO> filterRecipes(
             @RequestParam(required = false) String cuisine_type,
-            @RequestParam(required = false) Integer max_time) {
+            @RequestParam(required = false) Integer max_time,
+            @RequestParam(required = false) String a_part_of_name) {
 
-        RecipeFilterResponseDTO response = recipeService.filterRecipes(cuisine_type, max_time);
+        RecipeFilterResponseDTO response = recipeService.filterRecipes(cuisine_type, max_time, a_part_of_name);
         return ResponseEntity.ok(response);
     }
+    // @PostMapping("/search-by-ingredients")
+    // public ResponseEntity<List<RecipeSearchResultDTO>> searchByIngredients(
+    //         @RequestBody SearchByIngredientsRequest request) {
+
+    //     List<RecipeSearchResultDTO> recipes = recipeService.searchByIngredients(request);
+    //     return ResponseEntity.ok(recipes);
+    // }
     @PostMapping("/search-by-ingredients")
     public ResponseEntity<List<RecipeSearchResultDTO>> searchByIngredients(
             @RequestBody SearchByIngredientsRequest request) {
-
+        
         List<RecipeSearchResultDTO> recipes = recipeService.searchByIngredients(request);
         return ResponseEntity.ok(recipes);
     }

@@ -1,11 +1,10 @@
+// src/main/java/com/example/demo/dto/UserProfileResponse.java
 package com.example.demo.dto;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 @Builder
 public class UserProfileResponse {
     private Long userId;
