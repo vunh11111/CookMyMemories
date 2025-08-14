@@ -105,7 +105,7 @@
     transition: .2s;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
     .form div {
         display: block;
         height: auto;

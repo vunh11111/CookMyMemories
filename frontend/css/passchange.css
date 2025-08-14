@@ -48,6 +48,24 @@
     -webkit-appearance: none;
 }
 
+@media (max-width: 700px) {
+    .form div {
+        display: block;
+        height: auto;
+        margin-bottom: 40px;
+    }
+
+    .form div p {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .form div input {
+        width: 100%;
+        min-height: 40px;
+    }
+}
+
 .register_button {
     display: block;
     margin: 0 auto;
