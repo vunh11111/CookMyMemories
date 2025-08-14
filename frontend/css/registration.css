@@ -99,6 +99,12 @@
     transition: .2s;
 }
 
+.form div select:focus {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transition: .2s;
+}
+
 @media (max-width: 800px) {
     .form div {
         display: block;

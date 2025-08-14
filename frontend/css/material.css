@@ -57,6 +57,9 @@
 
 .drop_down_menu select:focus {
     outline: none;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transition: .2s;
 }
 
 .check_box {
@@ -137,7 +140,6 @@
 }
 
 .select_material div {
-    /* display: inline-block; */
     margin: 10px 10px;
     padding: 10px 20px;
     background-color: var(--secondary-color);

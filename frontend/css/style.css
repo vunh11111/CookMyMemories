@@ -541,6 +541,9 @@ main {
 
 .country div select:focus {
     outline: none;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transition: .2s;
 }
 
 .home_country {

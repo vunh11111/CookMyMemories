@@ -85,6 +85,12 @@
     transition: .2s;
 }
 
+#form_country_input select:focus {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transition: .2s;
+}
+
 #form_country_input::after {
     content: "";
     position: absolute;
