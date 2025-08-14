@@ -133,3 +133,15 @@ main {
     margin: 0 auto;
 }
 
+@media (max-width: 950px) {
+    .main_menu a {
+        width: 46%;
+    }
+}
+
+@media (max-width: 600px) {
+    .main_menu a {
+        width: 90%;
+    }
+}
+
