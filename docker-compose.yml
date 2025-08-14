@@ -7,9 +7,9 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: mydb
-      MYSQL_USER: myuser
-      MYSQL_PASSWORD: mypass
+      MYSQL_DATABASE: recipe_management
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Lovemyserver11@
     ports:
       - "3306:3306"
     volumes:
@@ -24,9 +24,9 @@ services:
     environment:
       DB_HOST: mysql
       DB_PORT: 3306
-      DB_NAME: mydb
-      DB_USER: myuser
-      DB_PASSWORD: mypass
+      DB_NAME: recipe_management
+      DB_USER: root
+      DB_PASSWORD: Lovemyserver11@
       PORT: 8080
     ports:
       - "8080:8080"
