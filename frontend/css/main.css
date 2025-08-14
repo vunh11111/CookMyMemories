@@ -1,13 +1,26 @@
+main {
+    margin: 0 !important;
+}
+
 .main_top {
     width: 100vw;
     height: 90vh;
     position: relative;
+    background-image: url("../img/main_top.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
-.main_top img {
+.main_top::before {
+    content: '';
+    position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0,0.3);
+    display: block;
 }
 
 .main_top p {
@@ -17,6 +30,7 @@
     bottom: 15%;
     color: white;
     font-weight: bold;
+    filter: brightness(100%) !important;
 }
 
 .main_content_title {
@@ -24,7 +38,10 @@
     font-size: clamp(1.5rem, calc(3rem + 1.0vw), 6rem);
     color: var(--secondary-color);
     font-weight: bold;
-    margin: 5vh 5vw;
+    margin: 10vh auto;
+    margin-bottom: 5vh;
+    width: 800px;
+    max-width: 90%;
 }
 
 .main_content {
@@ -33,6 +50,7 @@
     font-size: clamp(0.5rem, calc(2rem + 1.0vw), 2rem);
     margin: 0 auto;
     margin-bottom: 10vh;
+    text-indent: 2rem;
 }
 
 .main_menu {
@@ -47,42 +65,62 @@
     width: 400px;
     max-width: 95%;
     text-align: center;
-    background-color: white;
     border: 10px solid var(--secondary-color);
     margin: 1vh 1vw;
     padding: 1vh 1vw;
     box-sizing: border-box;
     border-radius: 5vh;
-    transition: .5s;
+    position: relative;
+    overflow: hidden;
 }
 
-.main_menu a:hover {
+.main_menu a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+.main_menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 100%;
     background-color: var(--secondary-color);
-    transition: .5s;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.main_menu a:hover::after {
+    animation: backColor .4s linear;
+    animation-fill-mode: forwards;
 }
 
 .main_menu a:hover div {
-    background-color: var(--primary-color);
-    transition: .5s;
+    animation: backColor2 .4s linear;
+    animation-fill-mode: forwards;
 }
 
 .main_menu a:hover p {
-    color: var(--primary-color);
-    transition: .5s;
+    animation: color .4s linear;
+    animation-fill-mode: forwards;
 }
 
 .main_menu a p {
     font-size:  clamp(1rem, calc(2.5rem + 1.0vw), 4rem);
     margin: 1.5vh 0;
     color: black;
-    transition: .5s;
 }
 
 .main_menu a div {
     background-color: var(--secondary-color);
     width: 90%;
     aspect-ratio: 1 / 1;
-    transition: .5s;
 }
 
 .main_menu_img {
@@ -93,5 +131,17 @@
     -webkit-mask-size: 100% 100%;
     -webkit-mask-position: center;
     margin: 0 auto;
+}
+
+@media (max-width: 950px) {
+    .main_menu a {
+        width: 46%;
+    }
+}
+
+@media (max-width: 600px) {
+    .main_menu a {
+        width: 90%;
+    }
 }
 
