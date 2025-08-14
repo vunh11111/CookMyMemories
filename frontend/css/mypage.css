@@ -3,7 +3,8 @@
     font-size: clamp(0.5rem, calc(1rem + 1.0vw), 2rem);
     color: red;
     font-weight: bold;
-    margin-top: 15vh;
+    margin-top: 10vh;
+    min-height: 5vh;
 }
 
 .form {
@@ -84,6 +85,12 @@
     transition: .2s;
 }
 
+#form_country_input select:focus {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transition: .2s;
+}
+
 #form_country_input::after {
     content: "";
     position: absolute;
@@ -128,6 +135,46 @@
     transition: .2s;
 }
 
+@media (max-width: 600px) {
+    .form div {
+        display: block;
+        height: auto;
+        margin-bottom: 30px;
+    }
+
+    .form div * {
+        margin-bottom: 10px;
+        min-height: 30px;
+        width: 100% !important;
+    }
+
+    .form_content {
+        margin-left: 10px;
+    }
+
+    .form div input {
+        margin-left: 10px;
+    }
+
+    #form_country_input {
+        height: auto;
+        margin-bottom: 10px;
+        margin-left: 10px;
+    }
+
+    #form_country_input select {
+        height: 100%;
+        margin-bottom: 0 !important;
+    }
+
+    .form div button {
+        display: block;
+        min-height: 30px;
+        width: 50px !important;
+        margin-left: 0;
+    }
+}
+
 .pass_change {
     display: block;
     margin: 0 auto;
@@ -149,3 +196,4 @@
     color: var(--primary-color);
     transition: .2s;
 }
+

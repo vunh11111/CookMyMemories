@@ -27,12 +27,12 @@ CREATE TABLE ingredients (
 
 -- Bảng Recipes (với cột time được thêm)
 CREATE TABLE recipes (
-    recipe_id INT AUTO_INCREMENT PRIMARY KEY,
+    recipe_id INT AUTO_INCREMENT  PRIMARY KEY,
     name VARCHAR(200) NOT NULL,
     instructions TEXT,
     imageurl VARCHAR(500),
     cuisine_type VARCHAR(50),
-    time INT COMMENT 'Thời gian nấu ăn tính bằng phút',
+    time INT ,
     INDEX idx_cuisine_type (cuisine_type),
     INDEX idx_recipe_name (name),
     INDEX idx_cooking_time (time)
@@ -42,7 +42,7 @@ CREATE TABLE recipes (
 CREATE TABLE recipe_ingredients (
     recipe_id INT,
     ingredient_id INT,
-    quantity DECIMAL(10,2),
+    quantity VARCHAR(255),
     optional BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (recipe_id, ingredient_id),
     FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id) ON DELETE CASCADE,
@@ -67,8 +67,8 @@ CREATE TABLE user_ingredients (
 CREATE TABLE ingredient_substitutes (
     original_ingredient_id INT,
     substitute_ingredient_id INT,
-    similarity_score DECIMAL(3,2) CHECK (similarity_score >= 0 AND similarity_score <= 1),
-    comment TEXT,
+    similarity_score TINYINT,
+    comment INT, -- recipe_id
     PRIMARY KEY (original_ingredient_id, substitute_ingredient_id),
     FOREIGN KEY (original_ingredient_id) REFERENCES ingredients(ingredient_id) ON DELETE CASCADE,
     FOREIGN KEY (substitute_ingredient_id) REFERENCES ingredients(ingredient_id) ON DELETE CASCADE,

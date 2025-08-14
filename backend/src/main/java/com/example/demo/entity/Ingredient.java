@@ -11,6 +11,12 @@ public class Ingredient {
     @Column(name = "ingredient_id")
     private Long ingredientId;
 
+    // @Id
+    // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ingredient_seq")
+    // @SequenceGenerator(name = "ingredient_seq", sequenceName = "ingredient_sequence")
+    // @Column(name = "ingredient_id")
+    // private Long ingredientId;
+
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 

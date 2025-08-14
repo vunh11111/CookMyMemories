@@ -1,9 +1,0 @@
--- -- Bảng user_ingredients
--- INSERT INTO user_ingredients (user_id, ingredient_id, quantity_available) VALUES
--- (1, 1, 2.0),   -- Alice has 2 kg rice
--- (1, 3, 100),   -- Alice has soy sauce
--- (2, 2, 500),   -- Bob has chicken breast
--- (2, 4, 50),    -- Bob has garlic
--- (3, 6, 300),   -- Charlie has tomato
--- (4, 5, 150),   -- Diana has onion
--- (5, 1, 1.5);   -- Edward has rice

@@ -55,6 +55,8 @@ const countrySelect2 = () => {
     });
 
     residenceCountry.value = "Vie"; // default
+
+    residenceCountry.options[1].selected = true;
     return { homeCountry, residenceCountry };
 };
 
@@ -76,6 +78,10 @@ const maxTime2 = () => {
     return timeInput;
 };
 
+// Khởi tạo select và input
+const { residenceCountry } = countrySelect2();
+const timeInput = maxTime2();
+
 // search UI
 let search = document.createElement("div");
 search.classList.add("search");
@@ -94,10 +100,6 @@ searchButton.name = "submit";
 searchButton.value = "検索";
 searchButton.classList.add("search_button");
 search.appendChild(searchButton);
-
-// Khởi tạo select và input
-const { residenceCountry } = countrySelect2();
-const timeInput = maxTime2();
 
 // Tạo div để hiện kết quả
 let resultDiv = document.createElement("div");

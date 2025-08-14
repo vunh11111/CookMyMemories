@@ -11,13 +11,12 @@ html, body {
 }
 
 html {
-    font-family: Arial,'ヒラギノ明朝 ProN', sans-serif;
     font-size: 62.5%;
 }
 
 body {
     background-color: #FFF;
-    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-family: "M PLUS Rounded 1c", "ヒラギノ角ゴ ProN W3", HiraKakuProN-W3, 游ゴシック, "Yu Gothic", メイリオ, Meiryo, Verdana, Helvetica, Arial, sans-serif;
     position: relative;
     background-color: var(--primary-color);
     padding-top: 10vh;
@@ -54,7 +53,7 @@ header {
 .header_title {
     position: absolute;
     top: 0;
-    left: 1.2vw;
+    left: 0.5vw;
     font-size: clamp(1rem, calc(2.5rem + 1.0vw), 4rem);
     display: flex;
     justify-content: flex-start;
@@ -86,7 +85,6 @@ header {
     background-size: contain;
     height: 10vh;
     aspect-ratio: 1 / 1;
-    margin-right: 0.5vw;
 }
 
 .hamburger_hidden {
@@ -97,7 +95,88 @@ header {
     overflow: hidden;
 }
 
-@media (min-width: 801px) {
+@keyframes color{
+    0%{
+        color: #000;
+    }
+    50%{
+        color: var(--primary-color);
+        opacity: 1;
+    }
+    100%{
+        color: #000000;
+        opacity: .6;
+    }
+}
+
+@keyframes opacity{
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: .6;
+    }
+}
+
+@keyframes color2{
+    0%{
+        color: #000;
+    }
+    50%{
+        color: var(--primary-color);
+    }
+    100%{
+        color: #000000;
+    }
+}
+
+@keyframes backColor{
+    0%{
+        width: 0%;
+        left: 0;
+    }
+    50%{
+        width: 100%;
+        left: 0;
+    }
+    100%{
+        width: 0;
+        left: 100%;
+    }
+}
+
+@keyframes img{
+    0%{
+        filter: brightness(100%) invert(0);
+    }
+    50%{
+        filter: brightness(0) invert(1);
+        opacity: 1;
+    }
+    100%{
+        filter: brightness(100%) invert(0);
+        opacity: .6;
+    }
+}
+
+@keyframes backColor2{
+    0%{
+        background-color: var(--secondary-color);
+    }
+    50%{
+        background-color: var(--primary-color);
+        opacity: 1;
+    }
+    100%{
+        background-color: var(--secondary-color);
+        opacity: .6;
+    }
+}
+
+@media (min-width: 850px) {
     .header_menu {
         display: flex;
         justify-content: flex-end;
@@ -122,25 +201,22 @@ header {
     .header_menu_list::after {
         content: '';
         position: absolute;
-        width: 100%;
+        width: 0;
         height: 100%;
         background-color: var(--secondary-color);
         top: 0;
         left: 0;
         z-index: -1;
-        transform: scaleX(0);
-        transform-origin: right;
-        transition: transform .5s ease-in-out;
     }
 
     .header_menu_list:hover::after {
-        transform: scaleX(1);
-        transform-origin: left;
+        animation: backColor .4s linear;
+        animation-fill-mode: forwards;
     }
 
     .header_menu_list:hover {
-        color: var(--primary-color);
-        transition: .2s;
+        animation: color .4s linear;
+        animation-fill-mode: forwards;
     }
 
     .header_menu_list::before {
@@ -153,13 +229,12 @@ header {
         height: 4vh;
         aspect-ratio: 1 / 1;
         filter: none;
-        transition: .2s;
         padding-left: 10px;
     }
 
     .header_menu_list:hover::before {
-        filter: brightness(0) invert(1);
-        transition: .2s;
+        animation: img .4s linear;
+        animation-fill-mode: forwards;
     }
 
     .login {
@@ -190,7 +265,7 @@ header {
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
     .header_menu {
         display: none;
     }
@@ -337,10 +412,11 @@ header {
 
 main {
     min-height: 60vh;
+    margin: 5vh 5vw;
 }
 
 .breadcrumbs {
-    font-size: clamp(0.2rem, calc(0.5rem + 1.0vw), 1.5rem);
+    font-size: clamp(1.5rem, calc(0.5rem + 1.0vw), 1.8rem);
 }
 
 .breadcrumbs a span {
@@ -465,6 +541,9 @@ main {
 
 .country div select:focus {
     outline: none;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transition: .2s;
 }
 
 .home_country {
@@ -473,11 +552,11 @@ main {
 
 @media (max-width: 950px) {
     .country p {
-        width: 20%;
+        width: 25%;
         margin: 2vh 0;
     }
     .country div {
-        width: 80%;
+        width: 75%;
         margin: 2vh 0;
     }
 }
@@ -550,7 +629,7 @@ footer {
     top: 0;
     right: 1.2vw;
     height: 100%;
-    margin: 2vh 0;
+    margin: 1vh 0;
 }
 
 .footer_menu a {
@@ -567,13 +646,26 @@ footer {
     transition: .2s;
 }
 
+.footer_sitepolicy {
+    display: block;
+    margin-bottom: 1vh;
+    font-size: clamp(0.5rem, calc(1.5rem + 1.0vw), 1.8rem);
+    opacity: 1;
+    transition: .2s;
+    color: var(--primary-color);
+}
+
+.footer_sitepolicy:hover {
+    opacity: .6;
+    transition: .2s;
+}
+
 .copyright {
     text-align: center;
     font-size: clamp(0.2rem, calc(0.5rem + 1.0vw), 1.5rem);
     color: var(--primary-color);
     margin-right: 1vw;
 }
-
 
 
 

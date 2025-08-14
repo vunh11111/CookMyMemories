@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://127.0.0.1:5500")
+@CrossOrigin(origins = "http://192.168.1.5:5500")
 @RestController
 @RequestMapping("/api/ingredients")
 public class IngredientController {

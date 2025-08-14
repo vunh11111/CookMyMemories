@@ -62,52 +62,52 @@ const fetchIngredients = async (cuisineType) => {
 const addIngredientStyles = () => {
     const style = document.createElement('style');
     style.textContent = `
-        .check_box {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px; /* giảm khoảng cách để bớt lãng phí chỗ trống */
-            margin: 15px 0;
-            padding: 15px;
-            background-color: rgb(255,250,220);
-            border-radius: 8px;
-            border: 1px solid rgb(255,250,220);
-            justify-content: flex-start; /* canh trái */
-        }
+        // .check_box {
+        //     display: flex;
+        //     flex-wrap: wrap;
+        //     gap: 10px; /* giảm khoảng cách để bớt lãng phí chỗ trống */
+        //     margin: 15px 0;
+        //     padding: 15px;
+        //     background-color: rgb(255,250,220);
+        //     border-radius: 8px;
+        //     border: 1px solid rgb(255,250,220);
+        //     justify-content: flex-start; /* canh trái */
+        // }
         
-        .check_box label {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            cursor: pointer;
-            white-space: nowrap;
-            padding: 5px 12px;
-            background-color: white;
-            border-radius: 4px;
-            border: 1px solid rgb(255,250,220);
-            transition: background-color 0.2s ease;
-            flex-shrink: 0; /* không cho label bị ép nhỏ */
-            flex: 1 1 auto; /* cho phép co giãn */
-            max-width: fit-content;
-        }
+        // .check_box label {
+        //     display: flex;
+        //     align-items: center;
+        //     font-size: 14px;
+        //     cursor: pointer;
+        //     white-space: nowrap;
+        //     padding: 5px 12px;
+        //     background-color: white;
+        //     border-radius: 4px;
+        //     border: 1px solid rgb(255,250,220);
+        //     transition: background-color 0.2s ease;
+        //     flex-shrink: 0; /* không cho label bị ép nhỏ */
+        //     flex: 1 1 auto; /* cho phép co giãn */
+        //     max-width: fit-content;
+        // }
         
-        .check_box label:hover {
-            background-color: rgb(255,250,220);
-        }
+        // .check_box label:hover {
+        //     background-color: rgb(255,250,220);
+        // }
         
-        .check_box input[type="checkbox"] {
-            margin-right: 8px;
-            transform: scale(1.1);
-        }
+        // .check_box input[type="checkbox"] {
+        //     margin-right: 8px;
+        //     transform: scale(1.1);
+        // }
         
-        .check_box input[type="checkbox"]:checked + span {
-            font-weight: bold;
-            color: #007bff;
-        }
+        // .check_box input[type="checkbox"]:checked + span {
+        //     font-weight: bold;
+        //     color: #007bff;
+        // }
         
-        .check_box label:has(input:checked) {
-            background-color: rgb(255,250,220);
-            border-color: #007bff;
-        }
+        // .check_box label:has(input:checked) {
+        //     background-color: rgb(255,250,220);
+        //     border-color: #007bff;
+        // }
     `;
     document.head.appendChild(style);
 };
@@ -188,22 +188,22 @@ const makeSelectMaterial = (value) => {
     let selectMaterial = document.createElement("div");
     selectMaterial.innerHTML = `<p>${value}</p>`;
     selectMaterial.id = `selectMaterial_${value}`;
-    selectMaterial.style.display = "inline-block";
-    selectMaterial.style.margin = "5px";
-    selectMaterial.style.padding = "5px 10px";
-    selectMaterial.style.backgroundColor = "rgb(255,250,220)";
-    selectMaterial.style.border = "1px solid #ccc";
-    selectMaterial.style.borderRadius = "4px";
+    // selectMaterial.style.display = "inline-block";
+    // selectMaterial.style.margin = "5px";
+    // selectMaterial.style.padding = "5px 10px";
+    // selectMaterial.style.backgroundColor = "rgb(255,250,220)";
+    // selectMaterial.style.border = "1px solid #ccc";
+    // selectMaterial.style.borderRadius = "4px";
     selectMaterialDiv.appendChild(selectMaterial);
 
     let selectMaterialButton = document.createElement("button");
     selectMaterialButton.innerHTML = "×";
     selectMaterialButton.value = `${value}`;
     selectMaterialButton.classList.add("select_material_button");
-    selectMaterialButton.style.marginLeft = "8px";
-    selectMaterialButton.style.backgroundColor = "transparent";
-    selectMaterialButton.style.border = "none";
-    selectMaterialButton.style.cursor = "pointer";
+    // selectMaterialButton.style.marginLeft = "8px";
+    // selectMaterialButton.style.backgroundColor = "transparent";
+    // selectMaterialButton.style.border = "none";
+    // selectMaterialButton.style.cursor = "pointer";
     selectMaterial.appendChild(selectMaterialButton);
 
     selectMaterialArray.push(value);

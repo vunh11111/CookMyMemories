@@ -249,14 +249,18 @@ window.auth = window.auth || (function(){
 
   // ✅ SỬA: Cập nhật UI loginStatus với URL đầy đủ
   async function updateLoginStatus(){
-    const el = document.getElementById('loginStatus');
+    const el = document.getElementById('login_name');
+    const el_h = document.getElementsByClassName("hamburger_login")[0];
     if (!el) return; // không có phần tử -> thoát
 
     const token = getToken();
     if (!token) {
       el.textContent = 'ログイン';
       el.href = 'login.html';
+      el_h.textContent = 'ログイン';
+      el_h.href = 'login.html';
       el.classList.remove('logged');
+      document.getElementById("login_img").style.opacity = 0.6;
       return;
     }
 
@@ -265,9 +269,12 @@ window.auth = window.auth || (function(){
       const res = await authFetch('http://localhost:8080/api/users/profile', { method: 'GET' });
       if (!res.ok) throw new Error('not authorized');
       const user = await res.json();
-      el.textContent = `ユーザー ${user.username}`;
+      el.textContent = `${user.username}`;
       el.href = 'mypage.html';
+      el_h.textContent = `${user.username}`;
+      el_h.href = 'mypage.html';
       el.classList.add('logged');
+      document.getElementById("login_img").style.opacity = 1;
     } catch (err) {
       // token không hợp lệ => xóa và hiển thị login
       removeToken();
@@ -411,9 +418,11 @@ headerMenuDiv.appendChild(login);
 
 let loginImg = document.createElement("img");
 loginImg.src = "img/login.png";
+loginImg.id = "login_img";
 login.appendChild(loginImg);
 
 let loginName = document.createElement("p");
+loginName.id = "login_name";
 loginName.innerHTML = "ログイン";
 login.appendChild(loginName);
 
@@ -603,6 +612,7 @@ const maxTime = () => {
     let timeInput = document.createElement("input");
     timeInput.type = "number";
     timeInput.name = "number";
+    timeInput.min = 0;
     timeDiv.appendChild(timeInput);
 };
 
@@ -624,12 +634,16 @@ for ( var i = 0 ; i < Object.values(menuList).length ; i++ ) {
     if ( Object.values(menuList)[i].type === 'search' ) {
         let footerMenuLink = document.createElement("a");
         footerMenuLink.href = Object.values(menuList)[i].link;
+        footerMenuLink.innerHTML = Object.values(menuList)[i].title;
         footerMenuDiv.appendChild(footerMenuLink);
-        let footerMenu = document.createElement("p");
-        footerMenu.innerHTML = Object.values(menuList)[i].title;
-        footerMenuLink.appendChild(footerMenu);
     }
 }
+
+let sitepolicy = document.createElement("a");
+sitepolicy.classList.add("footer_sitepolicy");
+sitepolicy.href = menuList.sitepolicy.link;
+sitepolicy.innerHTML = "このサイトについて"
+footer.appendChild(sitepolicy);
 
 let copyright = document.createElement("p");
 copyright.innerHTML = "Copyright © 2025 " + pageTitle + " All Rights Reserved."

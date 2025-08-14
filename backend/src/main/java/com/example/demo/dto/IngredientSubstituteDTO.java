@@ -1,14 +1,14 @@
 package com.example.demo.dto;
 
-import java.math.BigDecimal;
+// import java.math.BigDecimal;
 
 public class IngredientSubstituteDTO {
     private Long substitute_ingredient_id;
     private String name;
-    private BigDecimal similarity_score;
-    private String comment;
+    private Integer similarity_score;
+    private Integer comment;
 
-    public IngredientSubstituteDTO(Long substitute_ingredient_id, String name, BigDecimal similarity_score, String comment) {
+    public IngredientSubstituteDTO(Long substitute_ingredient_id, String name, Integer similarity_score, Integer comment) {
         this.substitute_ingredient_id = substitute_ingredient_id;
         this.name = name;
         this.similarity_score = similarity_score;
@@ -31,19 +31,19 @@ public class IngredientSubstituteDTO {
         this.name = name;
     }
 
-    public BigDecimal getSimilarity_score() {
+    public Integer getSimilarity_score() {
         return similarity_score;
     }
 
-    public void setSimilarity_score(BigDecimal similarity_score) {
+    public void setSimilarity_score(Integer similarity_score) {
         this.similarity_score = similarity_score;
     }
 
-    public String getComment() {
+    public Integer getComment() {
         return comment;
     }
 
-    public void setComment(String comment) {
+    public void setComment(Integer comment) {
         this.comment = comment;
     }
 }

@@ -96,7 +96,7 @@ function getQueryParams() {
                 window.auth.logout();
                 return;
             } else if (res.status === 404) {
-                resultDiv.innerHTML = "<p>検索結果が見つかりませんでした。</p>";
+                resultDiv.innerHTML = "<p class=\"result_error\">検索結果が見つかりませんでした。</p>";
                 return;
             } else {
                 throw new Error(`API Error: ${res.status}`);
@@ -106,7 +106,7 @@ function getQueryParams() {
         const data = await res.json();
 
         if (!data.recipes || data.recipes.length === 0) {
-            resultDiv.innerHTML = "<p>検索結果が見つかりませんでした。</p>";
+            resultDiv.innerHTML = "<p class=\"result_error\">検索結果が見つかりませんでした。</p>";
             return;
         }
 

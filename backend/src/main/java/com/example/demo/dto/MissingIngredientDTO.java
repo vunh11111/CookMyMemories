@@ -9,7 +9,7 @@ import lombok.Setter;
 public class MissingIngredientDTO {
     private Long ingredientId;
     private String name;
-    private Double quantity;
+    private String quantity;
     private String unit;
     private boolean hasSubstitute;
     private List<Long> substituteOptions;

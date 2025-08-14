@@ -1,12 +1,9 @@
-main {
-    margin: 5vh 5vw;
-}
-
 .main_sub_title {
     font-size: clamp(1.5rem, calc(2.2rem + 1.0vw), 3.5rem);
     text-align: center;
-    margin-top: 10vh;
+    margin-top: 15vh;
     font-weight: bold;
+    margin-bottom: 10vh;
 }
 
 .drop_down_menu {
@@ -61,9 +58,12 @@ main {
 
 .drop_down_menu select:focus {
     outline: none;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transition: .2s;
 }
 
-/* .check_box {
+.check_box {
     width: 800px;
     max-width: 90%;
     margin: 0 auto;
@@ -73,7 +73,7 @@ main {
     display: none;
 }
 
-.check_box div label {
+.check_box label {
     display: inline-block;
     width: 200px;
     font-size: clamp(0.5rem, calc(2rem + 1.0vw), 2rem);
@@ -82,7 +82,7 @@ main {
     cursor: pointer;
 }
 
-.check_box div label input {
+.check_box label input {
     margin-right: 10px;
     position: relative;
     width: 24px;
@@ -96,12 +96,12 @@ main {
     cursor: pointer;
 }
 
-.check_box div label:hover input {
+.check_box label:hover input {
     background: var(--secondary-color);
     transition: .2s;
 }
 
-.check_box div label input::before {
+.check_box label input::before {
     position: absolute;
     inset: 0;
     display: block;
@@ -116,17 +116,17 @@ main {
     font-weight: 1000;
 }
 
-.check_box div label input:checked {
+.check_box label input:checked {
     background: var(--secondary-color);
 }
 
-.check_box div label input:checked::before {
+.check_box label input:checked::before {
     opacity: 1;
 }
 
-.check_box div label input:focus {
+.check_box label input:focus {
     outline: none;
-} */
+}
 
 .select_material {
     padding: 10px 30px;
@@ -134,18 +134,18 @@ main {
     min-height: 100px;
     max-width: 800px;
     width: 90%;
-    margin: 5vh auto;
+    margin: 0 auto;
+    margin-bottom: 10vh;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .select_material div {
-    /* display: inline-block; */
     margin: 10px 10px;
     padding: 10px 20px;
     background-color: var(--secondary-color);
-    color: #000000;
+    color: #ffffff;
     font-size: clamp(0.5rem, calc(2rem + 1.0vw), 2rem);
     border-radius: 9999px;
     height: 3rem;
@@ -177,7 +177,6 @@ main {
 .search {
     display: grid;
     place-items: center;
-    margin-bottom: 15vh;
 }
 
 .searchButton {
@@ -220,40 +219,6 @@ main {
     color: var(--primary-color);
     background-color: var(--secondary-color);
     transition: .5s;
-}
-
-/* Tăng kích thước 1.5 lần */
-.search_box {
-  padding: 12px 18px; /* 8px * 1.5 = 12px, 12px * 1.5 = 18px */
-  font-size: 24px;    /* 16px * 1.5 = 24px */
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-  width: 300px;       /* 200px * 1.5 = 300px */
-  transition: border-color 0.3s;
-  margin-right: 12px; /* khoảng cách giữa input và button (bạn muốn rộng ra) */
-}
-
-.search_box:focus {
-  border-color: #007BFF;
-  box-shadow: 0 0 5px rgba(0,123,255,0.5);
-}
-
-.search_button {
-  padding: 12px 24px; /* 8px * 1.5 = 12px, 16px * 1.5 = 24px */
-  font-size: 24px;
-  background-color: #4f6174;
-  color: white;
-  border: 2px solid #677583;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  /* Bỏ border-left: none để có khoảng cách */
-}
-
-.search_button:hover {
-  background-color: #75889c;
-  border-color: #0056b3;
 }
 
 

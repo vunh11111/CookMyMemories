@@ -468,15 +468,15 @@ passchange.classList.add("pass_change");
 passchange.innerHTML = "パスワード変更";
 
 // Style cho nút đổi mật khẩu
-passchange.style.backgroundColor = "rgb(134,74,43)"; // xanh lá
-passchange.style.color = "white";
-passchange.style.border = "none";
-passchange.style.padding = "10px 50px";
-passchange.style.fontSize = "18px";
-passchange.style.borderRadius = "8px";
-passchange.style.cursor = "pointer";
-passchange.style.marginBottom = "40px";
-passchange.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+// passchange.style.backgroundColor = "rgb(134,74,43)"; // xanh lá
+// passchange.style.color = "white";
+// passchange.style.border = "none";
+// passchange.style.padding = "10px 50px";
+// passchange.style.fontSize = "18px";
+// passchange.style.borderRadius = "8px";
+// passchange.style.cursor = "pointer";
+// passchange.style.marginBottom = "40px";
+// passchange.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
 
 // // Hiệu ứng hover cho nút đổi mật khẩu
 // passchange.onmouseover = () => passchange.style.backgroundColor = "#45a049";
@@ -491,24 +491,26 @@ main.appendChild(passchange);
 
 // Tạo nút logout
 let logoutBtn = document.createElement("button");
+logoutBtn.classList.add("pass_change");
 logoutBtn.innerHTML = "ログアウト";
 
-logoutBtn.style.backgroundColor = "rgb(134,74,43)"; // đỏ
-logoutBtn.style.color = "white";
-logoutBtn.style.border = "none";
-logoutBtn.style.padding = "15px 40px";
-logoutBtn.style.fontSize = "18px";
-logoutBtn.style.borderRadius = "8px";
-logoutBtn.style.cursor = "pointer";
-logoutBtn.style.marginLeft = "20px";
-logoutBtn.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+logoutBtn.style.marginTop = "-10vh";
+// logoutBtn.style.backgroundColor = "rgb(134,74,43)"; // đỏ
+// logoutBtn.style.color = "white";
+// logoutBtn.style.border = "none";
+// logoutBtn.style.padding = "15px 40px";
+// logoutBtn.style.fontSize = "18px";
+// logoutBtn.style.borderRadius = "8px";
+// logoutBtn.style.cursor = "pointer";
+// logoutBtn.style.marginLeft = "20px";
+// logoutBtn.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
 
-// // Đặt vị trí chính giữa dưới màn hình
-logoutBtn.style.position = "relative";
-logoutBtn.style.bottom = "30px";
-logoutBtn.style.left = "48.7%";
-logoutBtn.style.transform = "translateX(-50%)";
-logoutBtn.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+// // // Đặt vị trí chính giữa dưới màn hình
+// logoutBtn.style.position = "relative";
+// logoutBtn.style.bottom = "30px";
+// logoutBtn.style.left = "48.7%";
+// logoutBtn.style.transform = "translateX(-50%)";
+// logoutBtn.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
 
 // // Hiệu ứng hover
 // logoutBtn.onmouseover = () => logoutBtn.style.backgroundColor = "#d32f2f";
@@ -547,13 +549,13 @@ async function updateProfile(data) {
         });
 
         if (res && res.ok) {
-            alert("Cập nhật thành công!");
+            alert("更新に成功しました!");
         } else {
-            alert("Cập nhật thất bại!");
+            alert("更新に失敗しました!");
         }
     } catch (err) {
-        console.error("Lỗi khi cập nhật profile:", err);
-        alert("Có lỗi xảy ra!");
+        console.error("プロフィールの更新中にエラーが発生しました:", err);
+        alert("エラーが発生しました!");
     }
 }
 
@@ -570,7 +572,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (!res || res.status === 401) logout();
         }
     } catch (err) {
-        console.error("Lỗi khi lấy thông tin profile:", err);
+        console.error("プロフィール情報取得中にエラーが発生しました:", err);
         logout();
     }
 });

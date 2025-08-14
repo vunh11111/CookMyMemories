@@ -62,7 +62,7 @@ main.appendChild(registerButton);
 
 // loginButton.addEventListener("click", async function (e) {
 //     e.preventDefault();
-    
+
 //     const username = formNameInput.value.trim();
 //     const password = formPasswordInput.value.trim();
 
@@ -158,8 +158,11 @@ loginButton.addEventListener("click", async function (e) {
     const username = formNameInput.value.trim();
     const password = formPasswordInput.value.trim();
 
-    if (!username || !password) {
-        formError.innerHTML = "Vui lòng nhập đầy đủ thông tin.";
+    if ( !username ) {
+        formError.innerHTML = "ニックネームを入力してください．";
+        return;
+    } else if ( !password ) {
+        formError.innerHTML = "パスワードを入力してください．";
         return;
     }
 
@@ -173,8 +176,8 @@ loginButton.addEventListener("click", async function (e) {
         if (response.ok) {
             const data = await response.json(); // Backend giờ trả { token: "..." }
             if (!data.token) {
-                console.error("Phản hồi login không có token:", data);
-                formError.innerHTML = "Đăng nhập thất bại: server không trả token.";
+                console.error("トークンなしのログイン応答:", data);
+                formError.innerHTML = "ログイン失敗: サーバーがトークンを返しません。";
                 return;
             }
 
@@ -186,11 +189,11 @@ loginButton.addEventListener("click", async function (e) {
                 const errObj = JSON.parse(errText);
                 errText = errObj.message || errObj.error || JSON.stringify(errObj);
             } catch (_) {}
-            formError.innerHTML = errText || "Đăng nhập thất bại.";
+            formError.innerHTML = errText || "ログインに失敗しました";
         }
     } catch (error) {
-        console.error("Lỗi khi gọi API login:", error);
-        formError.innerHTML = "Có lỗi xảy ra khi kết nối server.";
+        console.error("APIログイン時のエラー:", error);
+        formError.innerHTML = "サーバー接続時にエラーが発生しました。";
     }
 });
 

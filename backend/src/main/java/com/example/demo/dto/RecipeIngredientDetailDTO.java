@@ -3,11 +3,11 @@ package com.example.demo.dto;
 public class RecipeIngredientDetailDTO {
     private Long ingredient_id;
     private String name;
-    private Double quantity;
+    private String quantity;
     private String unit;
     private Boolean optional;
 
-    public RecipeIngredientDetailDTO(Long ingredient_id, String name, Double quantity, String unit, Boolean optional) {
+    public RecipeIngredientDetailDTO(Long ingredient_id, String name, String quantity, String unit, Boolean optional) {
         this.ingredient_id = ingredient_id;
         this.name = name;
         this.quantity = quantity;
@@ -21,8 +21,8 @@ public class RecipeIngredientDetailDTO {
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
-    public Double getQuantity() { return quantity; }
-    public void setQuantity(Double quantity) { this.quantity = quantity; }
+    public String getQuantity() { return quantity; }
+    public void setQuantity(String quantity) { this.quantity = quantity; }
 
     public String getUnit() { return unit; }
     public void setUnit(String unit) { this.unit = unit; }

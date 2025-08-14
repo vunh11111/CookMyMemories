@@ -203,13 +203,15 @@ const countryOptions = [
     { name: "ベトナム", value: "Vietnam" }
 ];
 let formCountry = document.createElement("div");
-formCountry.classList.add("formCountry");
 formDiv.appendChild(formCountry);
 let formCountryP = document.createElement("p");
 formCountryP.innerHTML = "母国";
 formCountry.appendChild(formCountryP);
+let formCountryDiv = document.createElement("div");
+formCountryDiv.classList.add("formCountry");
+formCountry.appendChild(formCountryDiv);
 let formCountrySelect = document.createElement("select");
-formCountry.appendChild(formCountrySelect);
+formCountryDiv.appendChild(formCountrySelect);
 
 countryOptions.forEach((c, i) => {
     let option = document.createElement("option");
@@ -234,12 +236,20 @@ registerButton.addEventListener("click", async function (e) {
     const password2 = formPassword2Input.value.trim();
     const countryVal = formCountrySelect.value;
 
-    if (!username || !email || !password || !password2) {
-        formError.innerHTML = "Vui lòng nhập đầy đủ thông tin.";
+    if ( !username ) {
+        formError.innerHTML = "ニックネームを入力してください．";
         return;
-    }
-    if (password !== password2) {
-        formError.innerHTML = "Mật khẩu xác nhận không khớp.";
+    } else if ( !email ) {
+        formError.innerHTML = "メールアドレスを入力してください．";
+        return;
+    } else if ( !password ) {
+        formError.innerHTML = "パスワードを入力してください．";
+        return;
+    } else if ( !password2 ) {
+        formError.innerHTML = "パスワード(確認用)を入力してください．";
+        return;
+    } else if (password !== password2) {
+        formError.innerHTML = "パスワードが一致していません．";
         return;
     }
 
@@ -251,15 +261,15 @@ registerButton.addEventListener("click", async function (e) {
         });
 
         if (response.ok) {
-            alert("Đăng ký thành công! Hãy đăng nhập.");
+            alert("登録完了！ログインしてください。");
             window.location.href = "login.html";
         } else {
             const err = await response.text();
-            formError.innerHTML = err || "Đăng ký thất bại.";
+            formError.innerHTML = err || "登録に失敗しました。";
         }
     } catch (error) {
         console.error(error);
-        formError.innerHTML = "Có lỗi xảy ra khi kết nối server.";
+        formError.innerHTML = "サーバー接続時にエラーが発生しました。";
     }
 });
 

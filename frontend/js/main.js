@@ -89,10 +89,6 @@ let mainTop = document.createElement("div");
 mainTop.classList.add("main_top");
 main.appendChild(mainTop);
 
-let mainTopImg = document.createElement("img");
-mainTopImg.src = "img/main_top.png";
-mainTop.appendChild(mainTopImg);
-
 let mainTopText = document.createElement("p");
 mainTopText.innerHTML = "懐かしの味を<br>この町で。";
 mainTop.appendChild(mainTopText);
@@ -105,7 +101,7 @@ main.appendChild(mainContentTitle);
 
 let mainContent = document.createElement("p");
 mainContent.classList.add("main_content");
-mainContent.innerHTML = "　" + pageExplanation;
+mainContent.innerHTML = pageExplanation;
 main.appendChild(mainContent);
 
 // main menu

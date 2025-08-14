@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "ingredient_substitutes")
@@ -20,11 +19,10 @@ public class IngredientSubstitute {
     @JoinColumn(name = "substitute_ingredient_id")
     private Ingredient substituteIngredient;
 
-    @Column(name = "similarity_score", precision = 3, scale = 2)
-    private BigDecimal similarityScore;
+    @Column(name = "similarity_score")
+    private Integer similarityScore;
 
-    @Column(columnDefinition = "TEXT")
-    private String comment;
+    private Integer comment;
 
     // Getters & Setters
     public IngredientSubstituteKey getId() {
@@ -51,19 +49,19 @@ public class IngredientSubstitute {
         this.substituteIngredient = substituteIngredient;
     }
 
-    public BigDecimal getSimilarityScore() {
+    public Integer getSimilarityScore() {
         return similarityScore;
     }
 
-    public void setSimilarityScore(BigDecimal similarityScore) {
+    public void setSimilarityScore(Integer similarityScore) {
         this.similarityScore = similarityScore;
     }
 
-    public String getComment() {
+    public Integer getComment() {
         return comment;
     }
 
-    public void setComment(String comment) {
+    public void setComment(Integer comment) {
         this.comment = comment;
     }
 }

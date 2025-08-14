@@ -3,9 +3,9 @@ package com.example.demo.dto;
 public class RecipeUsageDTO {
     private Long recipe_id;
     private String recipe_name;
-    private Double quantity;
+    private String quantity;
 
-    public RecipeUsageDTO(Long recipe_id, String recipe_name, Double quantity) {
+    public RecipeUsageDTO(Long recipe_id, String recipe_name, String quantity) {
         this.recipe_id = recipe_id;
         this.recipe_name = recipe_name;
         this.quantity = quantity;
@@ -27,11 +27,11 @@ public class RecipeUsageDTO {
         this.recipe_name = recipe_name;
     }
 
-    public Double getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Double quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 }

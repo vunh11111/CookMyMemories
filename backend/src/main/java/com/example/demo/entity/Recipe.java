@@ -12,6 +12,12 @@ public class Recipe {
     @Column(name = "recipe_id")
     private Long recipeId;
 
+    // @Id
+    // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipe_seq")
+    // @SequenceGenerator(name = "recipe_seq", sequenceName = "recipe_sequence")
+    // @Column(name = "recipe_id")
+    // private Long recipeId;
+
     @Column(name = "name")
     private String name;
 
@@ -25,7 +31,7 @@ public class Recipe {
     private String cuisineType;
 
     @Column(name = "time")
-    private Integer time;
+    private Integer time = 0;
 
     @OneToMany(mappedBy = "recipe")
     private List<RecipeIngredient> recipeIngredients;
@@ -71,8 +77,11 @@ public class Recipe {
         this.cuisineType = cuisineType;
     }
 
+    // public Integer getTime() {
+    //     return time;
+    // }
     public Integer getTime() {
-        return time;
+        return time != null ? time : 0; // Trả về 0 nếu null
     }
 
     public void setTime(Integer time) {

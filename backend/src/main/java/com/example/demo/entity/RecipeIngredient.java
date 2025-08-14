@@ -19,7 +19,7 @@ public class RecipeIngredient {
     @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
 
-    private Double quantity;
+    private String quantity;
 
     private Boolean optional;
 
@@ -48,11 +48,11 @@ public class RecipeIngredient {
         this.ingredient = ingredient;
     }
 
-    public Double getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Double quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 
