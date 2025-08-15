@@ -1,28 +1,34 @@
-# Sử dụng OpenJDK 21 làm base image
-FROM openjdk:21-jdk-slim
+# Multi-stage build để tách riêng build và runtime
+# Stage 1: Build stage
+FROM openjdk:21-jdk-slim as builder
+
+# Cài đặt Maven
+RUN apt-get update && apt-get install -y maven && rm -rf /var/lib/apt/lists/*
 
 # Thiết lập working directory
 WORKDIR /app
 
-# Copy Maven wrapper và pom.xml từ thư mục backend
-COPY backend/mvnw .
-COPY backend/.mvn .mvn
-COPY backend/pom.xml .
+# Copy toàn bộ backend folder
+COPY backend/ .
 
-# Cấp quyền thực thi cho Maven wrapper
-RUN chmod +x ./mvnw
+# Verify Java version
+RUN java -version
+RUN mvn -version
 
-# Download dependencies (sẽ được cache nếu pom.xml không thay đổi)
-RUN ./mvnw dependency:go-offline -B
+# Clean và build project
+RUN mvn clean compile -B
+RUN mvn package -DskipTests -B
 
-# Copy source code từ thư mục backend
-COPY backend/src src
+# Stage 2: Runtime stage
+FROM openjdk:21-jre-slim
 
-# Build ứng dụng
-RUN ./mvnw clean package -DskipTests
+WORKDIR /app
 
-# Expose port mà ứng dụng Spring Boot chạy
+# Copy jar file từ build stage
+COPY --from=builder /app/target/ingredient-api-0.0.1-SNAPSHOT.jar app.jar
+
+# Expose port
 EXPOSE 8080
 
 # Chạy ứng dụng
-CMD ["java", "-jar", "target/ingredient-api-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "app.jar"]
