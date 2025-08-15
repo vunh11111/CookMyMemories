@@ -3,34 +3,53 @@ version: '3.8'
 services:
   mysql:
     image: mysql:8.0
-    container_name: my_mysql
+    container_name: recipe_mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: Lovemyserver11@
       MYSQL_DATABASE: recipe_management
-      MYSQL_USER: root
+      MYSQL_USER: recipe_user
       MYSQL_PASSWORD: Lovemyserver11@
     ports:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    networks:
+      - recipe_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
 
   backend:
-    build: .
-    container_name: my_backend
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: recipe_backend
     restart: always
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     environment:
-      DB_HOST: mysql
-      DB_PORT: 3306
-      DB_NAME: recipe_management
-      DB_USER: root
-      DB_PASSWORD: Lovemyserver11@
-      PORT: 8080
+      - SPRING_PROFILES_ACTIVE=docker
+      - DATABASE_URL=jdbc:mysql://mysql:3306/recipe_management?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      - DB_USER=root
+      - DB_PASSWORD=Lovemyserver11@
+      - JWT_SECRET=MySecretKeyForJWTTokenGenerationAndValidation123456789
+      - PORT=8080
     ports:
       - "8080:8080"
-    command: ["java", "-jar", "app.jar"]
+    networks:
+      - recipe_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
 volumes:
   mysql_data:
+
+networks:
+  recipe_network:
+    driver: bridge
