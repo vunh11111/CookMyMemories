@@ -4,10 +4,10 @@ FROM openjdk:21-jdk-slim
 # Thiết lập working directory
 WORKDIR /app
 
-# Copy Maven wrapper và pom.xml trước để tận dụng Docker layer caching
-COPY mvnw .
-COPY .mvn .mvn
-COPY pom.xml .
+# Copy Maven wrapper và pom.xml từ thư mục backend
+COPY backend/mvnw .
+COPY backend/.mvn .mvn
+COPY backend/pom.xml .
 
 # Cấp quyền thực thi cho Maven wrapper
 RUN chmod +x ./mvnw
@@ -15,8 +15,8 @@ RUN chmod +x ./mvnw
 # Download dependencies (sẽ được cache nếu pom.xml không thay đổi)
 RUN ./mvnw dependency:go-offline -B
 
-# Copy source code
-COPY src src
+# Copy source code từ thư mục backend
+COPY backend/src src
 
 # Build ứng dụng
 RUN ./mvnw clean package -DskipTests
